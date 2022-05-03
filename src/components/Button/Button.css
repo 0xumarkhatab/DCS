@@ -1,0 +1,42 @@
+.btn {
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 8px;
+  margin-top: 20px;
+  background-color: black;
+}
+.btn-primary {
+  border: 1px solid var(--bg-primary);
+}
+.btn-success {
+  border: 1px solid var(--bg-success);
+}
+.btn-danger {
+  border: 1px solid var(--bg-danger);
+}
+.btn-primary:hover {
+  color: black;
+  cursor: pointer;
+}
+.btn-danger:hover,
+.btn-success:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--bg-primary);
+}
+.btn-danger:hover {
+  background: var(--bg-danger);
+}
+
+.btn-success:hover {
+  cursor: pointer;
+  color: white;
+
+  background: var(--bg-success);
+}

@@ -1,0 +1,46 @@
+.castVote {
+  background: black;
+  padding-top: 5vh;
+  color: white;
+  animation: fadeInOpacity 2s;
+}
+
+.castVote > .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.castVote > .title > h5 {
+  font-size: 35px;
+  font-family: sans-serif;
+}
+.castVote > .title > p {
+  font-size: 25px;
+  font-family: sans-serif;
+  margin-top: 15px;
+}
+
+.proposals__list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding-bottom: 3vh;
+  overflow: scroll;
+}
+
+.proposals__list::-webkit-scrollbar {
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  .proposals__list {
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .proposals__list {
+    grid-template-columns: auto;
+  }
+  .proposals__list > .proposal {
+    width: 60vw;
+  }
+}

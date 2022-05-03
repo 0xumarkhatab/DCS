@@ -1,0 +1,42 @@
+.acceptedProposals {
+  display: flex;
+  animation: fadeInOpacity 2s;
+}
+.acceptedProposalsList {
+  padding-top: 15vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding-bottom: 5vh;
+}
+
+@media only screen and(max-width:800px) {
+  .acceptedProposals {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media only screen and(max-width:600px) {
+  .acceptedProposals {
+    grid-template-columns: auto;
+  }
+}
+
+.empty__proposals {
+  height: 86vh;
+  width: 90vw;
+
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,91 @@
+.navbar {
+  color: white;
+  fill: #ffffff;
+  padding: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  height: 67px;
+  width: 100vw;
+  box-shadow: 1px 1px 1px 0.1px var(--bg-primary);
+  background-color: black;
+}
+.navbar::-webkit-scrollbar {
+  display: none;
+}
+.navbar__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar__logo > div > a > img {
+  width: 6.6rem;
+  height: 6.6rem;
+  object-fit: contain;
+}
+.navbar__logo > .company__description {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+.navbar__logo > .company__description > h1 {
+  font-size: min(2vw, 18px);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.navbar__logo > .company__description > p {
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+.navItems {
+  display: flex;
+  margin-right: 30px;
+  flex: 0.8;
+}
+.navItems > nav {
+  display: flex;
+}
+.navItems > nav > a {
+  padding: 1.2rem;
+  font-family: "Montserrat", Sans-serif;
+  font-size: min(16px, 3vw);
+  fill: #ffffff;
+  color: white;
+  text-decoration: none;
+  transition: all 300ms ease-in-out;
+  width: max-content;
+}
+.navItems > nav > a:hover {
+  cursor: pointer;
+}
+
+.navItems > nav > .btn-primary {
+  position: fixed;
+  margin-top: 30px;
+  right: 40px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .navItems {
+    transform: scale(0);
+    display: none;
+  }
+  .navbar__quoteButton {
+    display: none;
+  }
+  .navbar__quoteButton__primary {
+    display: flex;
+    width: 100px;
+    min-height: fit-content;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+}

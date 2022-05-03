@@ -1,0 +1,95 @@
+.proposal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 30px;
+  border: 1px solid grey;
+  height: 50vh;
+  width: min(240px, 30vw);
+  margin-left: 3vw;
+  border-radius: 10px;
+  animation: fadeInOpacity 3s;
+}
+.proposal:hover {
+  cursor: pointer;
+  border-color: aqua;
+}
+.proposal > p {
+  margin: 5px 0 5px 0;
+}
+.proposal__title {
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  display: flex;
+}
+
+.proposal > p > pre {
+  font-size: 18px;
+}
+.prposal__votes {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.prposal__votes > div > img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+.prposal__votes > div {
+  display: flex;
+  margin-left: 4px;
+}
+.prposal__votes > div > p {
+  font-size: 20px;
+}
+
+.prposal__votes > .rejectCount > img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 50%;
+  transform: scaleY(-1);
+  margin-top: 4px;
+}
+
+.proposal > .buttons {
+  display: flex;
+  margin: 0 auto;
+}
+.proposal > .buttons > button {
+  background: black;
+  color: white;
+}
+
+.proposal > .buttons > button {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid grey;
+  margin-left: 10px;
+  border-radius: 10px;
+  transition: 100ms all ease-in-out;
+}
+.proposal > .buttons > button:hover {
+  cursor: pointer;
+  background-color: var(--bg-primary);
+  color: black;
+  transform: scale(1.06);
+  box-shadow: 0.5px 0.5px 0.5px 0.5px white;
+}
+
+button.success {
+  background-color: rgb(98, 213, 98);
+  color: white;
+}
+
+button.danger {
+  background-color: red;
+  color: white;
+}

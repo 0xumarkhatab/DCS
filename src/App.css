@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+}
+.app {
+  height: 100%;
+  background-color: black;
+  color: white;
+  padding-top: 15vh;
+}
+
+:root {
+  --bg-primary: aqua;
+  --bg-success: rgb(47, 239, 47);
+  --bg-danger: rgb(228, 57, 57);
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
