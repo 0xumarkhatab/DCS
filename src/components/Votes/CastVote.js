@@ -30,6 +30,7 @@ const dispatch = useDispatch();
 
   function clickHandler(obj) {
     console.log("view proposal ", obj);
+    
     dispatch({
       type: "SET__CURRENTPROPOSAL",
       CURRENTPROPOSAL: obj,

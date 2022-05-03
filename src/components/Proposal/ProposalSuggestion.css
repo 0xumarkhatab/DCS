@@ -10,7 +10,7 @@
   position: absolute;
   left: 30vw;
   top: 20vh;
-  height: 50vh;
+  height: 53vh;
   width: 25vw;
   background: black;
   padding: 100px;
@@ -73,6 +73,15 @@
   box-shadow: 2px 2px 2px 2px rgb(56, 237, 234);
   cursor: pointer;
 }
+.proposal__suggestion-btn {
+  display: flex;
+  justify-content: space-between;
+}
+.proposal__suggestion-btn > p {
+  margin-top: 10px;
+  width: 40vw;
+}
+
 @keyframes fadeInBorder {
   0% {
     border: 0.3px solid var(--bg-success);

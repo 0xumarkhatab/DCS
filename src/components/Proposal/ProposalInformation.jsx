@@ -63,7 +63,7 @@ function ProposalInformation() {
           <p>{proposal.statement}</p>
         </p>
 
-        {proposal.disabled ? (
+        {proposal.disabled || proposal.proposedby == user.rollnumber ? (
           <p className="already__contributed">
             <p> You can not vote twice </p>
           </p>

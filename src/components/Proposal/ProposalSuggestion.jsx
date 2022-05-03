@@ -11,6 +11,7 @@ function ProposalSuggestion() {
   let theProposalsList = [...ProposalsList];
 
   let user = useSelector((state) => state?.USER);
+
   if (user === undefined || user === null) {
     alert("kindly login first");
     navigate("/login");
@@ -26,18 +27,24 @@ function ProposalSuggestion() {
         "Kindly Fill the fields Correctly";
       return;
     }
+
+    let acceptedUsers = [];
+    acceptedUsers.push(user);
+
     let proposalObj = {
       proposedby: user.rollnumber,
       title: title,
       statement: description,
       id: ProposalsList.length + 1,
-      acceptedBy: [],
+      acceptedBy: acceptedUsers,
       rejectedBy: [],
     };
 
     document.getElementById("title").value = null;
     document.getElementById("description").value = null;
+
     theProposalsList.push(proposalObj);
+
     dispatch({
       type: "SET__PROPOSALSLIST",
       PROPOSALSLIST: theProposalsList,
@@ -87,6 +94,10 @@ function ProposalSuggestion() {
           ></Button>
           {/* </Link>
            */}
+
+          <p>
+            You can View it in <b>Accepted Proposals</b> section
+          </p>
         </div>
       </div>
     </div>
