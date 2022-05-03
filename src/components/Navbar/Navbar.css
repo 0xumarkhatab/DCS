@@ -43,16 +43,16 @@
 
 .navItems {
   display: flex;
+  flex: 0.88;
   margin-right: 30px;
-  flex: 0.8;
 }
 .navItems > nav {
   display: flex;
 }
 .navItems > nav > a {
-  padding: 1.2rem;
+  padding: 1rem;
   font-family: "Montserrat", Sans-serif;
-  font-size: min(16px, 3vw);
+  font-size: min(14.6px, 3vw);
   fill: #ffffff;
   color: white;
   text-decoration: none;
