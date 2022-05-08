@@ -10,7 +10,7 @@ export const proposalsList = [
          
         votedUsers:[],
         proposedby:"19L-1034",
-        acceptedBy:["19L-1212"],
+        acceptedBy:[],
         rejectedBy:[],
 
       },
@@ -23,7 +23,7 @@ export const proposalsList = [
         votedUsers:[],
         proposedby:"19L-2765",
         acceptedBy:[],
-        rejectedBy:["19L-1212","19L-1215"],
+        rejectedBy:[],
       },
     {
       title: "Schedule for Welcome Party 2022",
@@ -33,8 +33,8 @@ export const proposalsList = [
          
         votedUsers:[],
         proposedby:"19L-2765",
-        acceptedBy:["19L-1112","19L-2332"],
-        rejectedBy:["19L-0923","19L-2112"],
+        acceptedBy:[],
+        rejectedBy:[],
       },
     {
       title: "Schedule for Welcome Party 2022",
@@ -44,8 +44,8 @@ export const proposalsList = [
          
         votedUsers:[],
         proposedby:"19L-1034",
-        acceptedBy:["19L-1212"],
-        rejectedBy:["19L-2456","19L-1222"],
+        acceptedBy:[],
+        rejectedBy:[],
       },
     
   ];
@@ -55,13 +55,17 @@ export const proposalsList = [
     let index=0;
     ProposalsList?.map((item)=>{
       let acceptedby=[...item.acceptedBy];
+      if((item.proposedby===userKey))
+      result.push(index)
+      else{
       acceptedby?.map((person)=>{
-        if(person.rollnumber===userKey){
+        if((person.rollnumber===userKey)){
           result.push(index)
         }
       }
       
       );
+    }
       index+=1;
       
     }

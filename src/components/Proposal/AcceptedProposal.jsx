@@ -19,8 +19,6 @@ function AcceptedProposal() {
   const dispatch = useDispatch();
 
   function clickHandler(obj) {
-    console.log("view proposal ", obj);
-    console.log("object disbaled ", obj);
     obj.disabled = true;
     dispatch({
       type: "SET__CURRENTPROPOSAL",
@@ -31,15 +29,11 @@ function AcceptedProposal() {
   }
 
   console.log("total Proposals Are ", ProposalsList);
-  //    let accepted=Proposals
-  console.log(
-    "\nResult for 19L-2765 is",
-    getAcceptedProposals(user?.rollnumber, ProposalsList)
-  );
 
   let index = 0;
   let indices = getAcceptedProposals(user?.rollnumber, ProposalsList);
   let res = [];
+  console.log("\nindices to include\n", indices, "\n");
   for (var i = 0; i < indices.length; i++) {
     res.push(ProposalsList[indices[i]]);
   }
@@ -47,7 +41,7 @@ function AcceptedProposal() {
 
   return (
     <div className="acceptedProposals">
-      {proposalsList.length > 0 && (
+      {proposalsList?.length > 0 && (
         <div className="title">
           <h5>Accepted and Proposed Proposals</h5>{" "}
         </div>

@@ -26,12 +26,15 @@ function Login() {
   }
 
   async function nonVerified() {
-    document.getElementById("validation").value =
+    console.log("\n\t\t--Non Verified Called\n");
+
+    document.getElementById("validation").innerHTML =
       "You Are Not Registered Yet\nSign Up First";
   }
 
   async function loginHandler(e) {
-    console.log("handling login");
+    document.getElementById("validation").innerHTML = "Verifying...";
+
     if (id === null || password === null) {
       document.getElementById("validation").innerHTML =
         "Kindly Fill the fields Correctly";
@@ -56,7 +59,7 @@ function Login() {
         <div className="login__heading">
           <h1>Login</h1>
         </div>
-        <div className="validation" id="validation"></div>
+        <p className="validation" id="validation"></p>
 
         <div>
           <label htmlFor="rollnumber">Roll Number</label>

@@ -55,18 +55,27 @@ export async function verifyUser(user,verifier,rejector){
       users.push(p);
 
     });
+    let found=false;
+
     if(users.length>0){
-    return users?.map((item)=>{
+     users?.map((item)=>{
         if((item.rollnumber==user.rollnumber) && (item.password===user.password)){
-            verifier(true);
-            return true;
+            found=true;
+//            return true;
 
         }
     })
-    
+if(found===true){
+    verifier(true);
+    return true;
+}    
+else{
     rejector();
     return false;
-    }
+}    
+
+
+}
 
 }
 

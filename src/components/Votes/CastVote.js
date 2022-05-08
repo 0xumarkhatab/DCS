@@ -49,7 +49,7 @@ console.log("\nProposals List in CastVote := ",proposalsList)
 
   proposalsList?.map((item)=>{
     
-    if((acceptedIndices?.includes(item.id-1)===false) && (rejectedIndices?.includes(item.id-1)===false)){
+    if((acceptedIndices?.includes(item.id-1)===false) && (rejectedIndices?.includes(item.id-1)===false) && (item.proposedby!==user?.rollnumber) ){
       console.log("proposal ",item.id," neither accepted nor rejected");
       filteredList.push(item);
     }
