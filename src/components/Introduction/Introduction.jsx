@@ -21,7 +21,7 @@ function Introduction() {
         </h1>
         <p>We Believe in Collaboration</p>
 
-        <Link to={user === null ? "/login" : "/castVote"}>
+        <Link to={user === null ? "/authentication" : "/castVote"}>
           <Button title="Get Started" />
         </Link>
       </div>

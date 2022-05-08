@@ -9,9 +9,11 @@ import { getRejectedProposals } from "../Data/data";
 function RejectedProposals() {
   const [selected, setSelected] = useState(null);
 
-  let proposalsList = useSelector((state) => state.PROPOSALSLIST);
-  let user = useSelector((state) => state.USER);
-  let ProposalsList = [...proposalsList];
+  let proposalsList = useSelector((state) => state?.PROPOSALSLIST);
+  let user = useSelector((state) => state?.USER);
+  let ProposalsList;
+  if (proposalsList) ProposalsList = [...proposalsList];
+
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -45,11 +47,11 @@ function RejectedProposals() {
       {user === null ? <Navigate to="/login" /> : <p></p>}
       {ProposalsList?.length === 0 ? (
         <div className="empty__proposals">
-          <h5>No Accepted Proposals</h5>{" "}
+          <h5>No Rejected Proposals</h5>{" "}
         </div>
       ) : (
         <div className="rejectedProposalsList">
-          {ProposalsList.map((item) => {
+          {ProposalsList?.map((item) => {
             return (
               <Proposal
                 onClickHandler={clickHandler}

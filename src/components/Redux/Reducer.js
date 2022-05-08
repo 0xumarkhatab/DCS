@@ -30,6 +30,7 @@ const reducer=(state=initialState,action)=>{
                 ...state,
                 CURRENTPROPOSAL:action.CURRENTPROPOSAL,
             }
+            break;
         default:
             break;
     }

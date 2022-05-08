@@ -9,9 +9,11 @@ import { getAcceptedProposals } from "../Data/data";
 function AcceptedProposal() {
   const [selected, setSelected] = useState(null);
 
-  let proposalsList = useSelector((state) => state.PROPOSALSLIST);
-  let user = useSelector((state) => state.USER);
-  let ProposalsList = [...proposalsList];
+  let proposalsList = useSelector((state) => state?.PROPOSALSLIST);
+  let user = useSelector((state) => state?.USER);
+  let ProposalsList;
+
+  if (proposalsList) ProposalsList = [...proposalsList];
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,6 +47,11 @@ function AcceptedProposal() {
 
   return (
     <div className="acceptedProposals">
+      {proposalsList.length > 0 && (
+        <div className="title">
+          <h5>Accepted and Proposed Proposals</h5>{" "}
+        </div>
+      )}
       {user === null && alert("Kindly Login First !")}
       {user === null ? <Navigate to="/login" /> : <p></p>}
       {ProposalsList?.length === 0 ? (
@@ -54,7 +61,7 @@ function AcceptedProposal() {
         </div>
       ) : (
         <div className="acceptedProposalsList">
-          {ProposalsList.map((item) => {
+          {ProposalsList?.map((item) => {
             return (
               <Proposal
                 onClickHandler={clickHandler}

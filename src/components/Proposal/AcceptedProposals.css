@@ -1,23 +1,45 @@
 .acceptedProposals {
   display: flex;
   animation: fadeInOpacity 2s;
+  flex-direction: column;
 }
-.acceptedProposalsList {
-  padding-top: 15vh;
-  display: grid;
-  grid-template-columns: auto auto auto;
+
+.acceptedProposals > .title {
+  font-size: 2rem;
+  justify-content: center;
+  display: flex;
+  padding-top: 5vh;
   padding-bottom: 5vh;
 }
 
-@media only screen and(max-width:800px) {
-  .acceptedProposals {
+.acceptedProposals > .acceptedProposalsList {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px 10px;
+
+  padding-bottom: 5vh;
+}
+.acceptedProposals > .acceptedProposalsList > .proposal {
+  width: 20vw;
+}
+
+@media only screen and (max-width: 1000px) {
+  .acceptedProposals > .acceptedProposalsList > .proposal {
+    width: 30vw;
+  }
+  .acceptedProposals > .acceptedProposalsList {
     grid-template-columns: auto auto;
+    grid-gap: 10px 10px;
   }
 }
 
-@media only screen and(max-width:600px) {
-  .acceptedProposals {
+@media only screen and (max-width: 600px) {
+  .acceptedProposals > .acceptedProposalsList > .proposal {
+    width: 50vw;
+  }
+  .acceptedProposals > .acceptedProposalsList {
     grid-template-columns: auto;
+    grid-gap: 10px 10px;
   }
 }
 

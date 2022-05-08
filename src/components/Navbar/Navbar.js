@@ -14,7 +14,7 @@ function Navbar() {
         <div>
           <Link to="">
             {" "}
-            <img src="https://ak.picdn.net/shutterstock/videos/1052037433/thumb/1.jpg?ip=x480" />
+            <img src="./dcs__logo.png" />
           </Link>
         </div>
         <div className="company__description">
@@ -24,9 +24,7 @@ function Navbar() {
       </div>
       <div className="navItems">
         <nav>
-          <Link onClick={()=>{
-            console.log("voting for change")
-          }} className="link" to="/castVote">
+          <Link className="link" to="/castVote">
             Vote for Change
           </Link>
           <Link className="link" to="/giveProposal">
@@ -44,6 +42,7 @@ function Navbar() {
             <Button title={"Welcome ," + user.rollnumber} />
           )}
            */}
+           
         </nav>
       </div>
     </div>

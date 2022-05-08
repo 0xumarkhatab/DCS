@@ -8,16 +8,15 @@ import { getAcceptedProposals,getRejectedProposals } from '../Data/data'
 
 function CastVote() {
   const navigate=useNavigate();
+  const [selected, setSelected] = useState(false);
+  const dispatch = useDispatch();  
+  const proposalsList=useSelector(state=>state?.PROPOSALSLIST);
 
-const proposalsList=useSelector(state=>state?.PROPOSALSLIST);
-console.log("proposal list ",proposalsList);
 if(proposalsList===undefined){
 navigate("/");
 }
 
-console.log("\nFresh Proposals List ",proposalsList)
-const [selected, setSelected] = useState(false);
-const dispatch = useDispatch();
+console.log("\nProposals List in CastVote := ",proposalsList)
     let user=null;
     user = JSON.parse( localStorage.getItem("USER"))
     console.log("USer is ",user );
@@ -65,10 +64,16 @@ const dispatch = useDispatch();
   console.log("Filtered List is ",filteredList);
   return (
     <div className="castVote">
-        <div className='title'>
+        
+        {
+          filteredList.length>0?<div className='title'>
           <h5>Here Are The New Proposals</h5>
           <p>Vote for the Better Future !!</p>
+
         </div>
+:<div className='title'><h5>There Are No New Proposals For You !</h5></div>
+        }
+
         <div className="proposals__list">
           {
           user===null?<Navigate to={"/login"}/>:

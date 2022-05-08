@@ -1,4 +1,4 @@
-.login__wrapper {
+.signup__wrapper {
   background-color: black;
   height: 100vh;
   width: 100%;
@@ -6,46 +6,45 @@
   padding-top: 5vh;
 }
 
-.login {
+.signup {
   position: absolute;
   left: 30vw;
-  padding-top: 10vh;
   height: fit-content;
-  width: 20vw;
+  width: 25vw;
   background: black;
-  padding: 100px;
+  padding: 4vh 10vw;
   padding-bottom: 10vh;
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px var(--bg-primary);
-  animation: fadeInOpacity 2s;
+  animation: fadeInOpacity 3s;
 }
 
-.login:hover {
+.signup:hover {
   animation: fadeInBorder 4s infinite;
   cursor: pointer;
 }
 
-.login > div {
+.signup > div {
   color: white;
   display: flex;
   flex-direction: column;
 }
 
-.login > .validation {
-  color: red;
+.signup > .account__validation {
+  color: var(--bg-success);
   margin-bottom: 10px;
 }
 
-.login > .login__heading > h1 {
+.signup > .signup__heading > h1 {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
-  color: rgb(56, 237, 234);
+  color: var(--bg-success);
   padding-bottom: 50px;
   font-size: 40px;
 }
 
-.login > div > input {
+.signup > div > input {
   outline: none;
   border: none;
   padding: 10px;
@@ -56,7 +55,7 @@
   margin-bottom: 20px;
 }
 
-.login-btn > a > .btn-primary {
+.signup-btn > a > .btn-primary {
   padding: 10px;
   border: 1px solid grey;
   font-family: sans-serif;
@@ -68,7 +67,7 @@
   padding-bottom: 5vh;
 }
 
-.login-btn > a > .btn-primary:hover {
+.signup-btn > a > .btn-primary:hover {
   background: rgb(56, 237, 234);
   color: black;
   transform: scale(1.02);
@@ -78,7 +77,7 @@
 
 @keyframes fadeInBorder {
   0% {
-    border: 0.3px solid var(--bg-danger);
+    border: 0.3px solid var(--bg-success);
   }
 
   100% {

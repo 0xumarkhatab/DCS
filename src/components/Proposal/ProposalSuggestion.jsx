@@ -3,12 +3,14 @@ import "./ProposalSuggestion.css";
 import Button from "../Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
+import { updateProposal } from "../../firebaseConfig";
 
 function ProposalSuggestion() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let ProposalsList = useSelector((state) => state.PROPOSALSLIST);
-  let theProposalsList = [...ProposalsList];
+  let ProposalsList = useSelector((state) => state?.PROPOSALSLIST);
+  let theProposalsList = [];
+  if (ProposalsList) theProposalsList = [...ProposalsList];
 
   let user = useSelector((state) => state?.USER);
 
@@ -20,7 +22,7 @@ function ProposalSuggestion() {
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
 
-  function proposalHandler(e) {
+  async function proposalHandler(e) {
     console.log("handling Propose");
     if (title === null || description === null) {
       document.getElementById("proposal__validation").innerHTML =
@@ -35,7 +37,7 @@ function ProposalSuggestion() {
       proposedby: user.rollnumber,
       title: title,
       statement: description,
-      id: ProposalsList.length + 1,
+      id: ProposalsList ? ProposalsList.length + 1 : 1,
       acceptedBy: acceptedUsers,
       rejectedBy: [],
     };
@@ -49,7 +51,7 @@ function ProposalSuggestion() {
       type: "SET__PROPOSALSLIST",
       PROPOSALSLIST: theProposalsList,
     });
-
+    updateProposal(proposalObj);
     navigate("/castVote");
   }
 

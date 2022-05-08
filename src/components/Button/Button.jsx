@@ -1,7 +1,6 @@
 import React from "react";
 import "./Button.css";
 function Button({ onClick, title, variant }) {
-  console.log("variant is ", variant);
   let classname =
     variant === "success"
       ? "btn-success"

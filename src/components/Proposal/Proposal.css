@@ -6,7 +6,7 @@
   padding: 30px;
   border: 1px solid grey;
   height: 50vh;
-  width: min(240px, 30vw);
+  width: 20vw;
   margin-left: 3vw;
   border-radius: 10px;
   animation: fadeInOpacity 3s;

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux/es/exports";
 import Button from "../Button/Button";
 import "./ProposalInformation.css";
 import { Link, useNavigate } from "react-router-dom";
+import { updateProposal } from "../../firebaseConfig";
 
 function ProposalInformation() {
   let proposal = useSelector((state) => state.CURRENTPROPOSAL);
@@ -14,18 +15,19 @@ function ProposalInformation() {
   const navigate = useNavigate();
 
   function IncreaseAcceptance(id) {
-    console.log("increasing acceptance");
     let index = proposals.findIndex((obj) => obj.id === id);
     let p = { ...proposals[index] };
-    console.log(" the proposal is ", p);
     p.acceptedBy.push(user);
+    theProposalsList[p.id - 1] = { ...p };
     console.log("new proposal is ", p);
-    theProposalsList[index] = { ...p };
-    console.log("New proposals List are \n", theProposalsList);
+    updateProposal(p);
+
     dispatch({
       type: "SET__PROPOSALSLIST",
-      PROPOSALSLIST: theProposalsList,
+      PROPOSALSLIST: [...theProposalsList],
     });
+
+    navigate("/castVote");
   }
   function IncreaseRejection(id) {
     console.log("Decreasing acceptance");
@@ -34,10 +36,14 @@ function ProposalInformation() {
     p.rejectedBy.push(user);
     theProposalsList[index] = p;
     console.log("new proposals are \n", proposals);
+    updateProposal(p);
+
     dispatch({
       type: "SET__PROPOSALSLIST",
       PROPOSALSLIST: theProposalsList,
     });
+
+    navigate("/castVote");
   }
 
   return (
