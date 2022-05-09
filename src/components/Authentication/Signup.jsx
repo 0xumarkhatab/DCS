@@ -15,20 +15,22 @@ function Signup() {
     console.log("handling signup");
     if (rollnumber === null || email === null || password === null) {
       document.getElementById("account__validation").innerHTML =
-        "Kindly Fill the fields Correctly";
+        "Kindly Fill All the fields Correctly";
       return 0;
     } else if (!email?.includes("@lhr.nu.edu.pk")) {
       document.getElementById("account__validation").innerHTML =
         "Kindly Enter Valid University Issued Email";
       return 0;
-    } else if (!rollnumber?.includes("L-") && rollnumber.length !== 8) {
-      document.getElementById("account__validation").innerHTML =
-        "Kindly Enter 8 character Correct Rollnumber";
-      return 0;
-    } else {
-      document.getElementById("account__validation").innerHTML =
-        "Credientials Verified";
     }
+    const reguarExp = new RegExp("[0-9][0-9]L-[0-9][0-9][0-9][0-9]");
+    if (!reguarExp.test(rollnumber)) {
+      document.getElementById("account__validation").innerHTML =
+        "Enter Correct Format (e.g 19L-1234)  RollNumber";
+      return 0;
+    }
+
+    document.getElementById("account__validation").innerHTML =
+      "Credientials Verified";
 
     let signupObj = {
       email: email,
