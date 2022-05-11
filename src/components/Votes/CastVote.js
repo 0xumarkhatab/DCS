@@ -60,7 +60,9 @@ console.log("\nProposals List in CastVote := ",proposalsList)
 
   
   console.log("Filtered List is ",filteredList);
-
+  filteredList=filteredList.sort(function (a,b){
+    return b.contributers.length-a.contributers.length;
+  })
 
   return (
     <div className="castVote">
