@@ -20,16 +20,12 @@ function Proposal({ onClickHandler, object, disabled }) {
           <div className="acceptCount">
             {" "}
             <img src="https://i.imgflip.com/42rbvt.jpg" />
-            <p>{object.acceptedBy.length}</p>
-          </div>
-          <div className="rejectCount">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEZnEjZd3i9iUkF36usznxu4N6adjjvbGpsNLPLNms-I6tuJbq-E4kiY5H3qxFM-iX_Vo&usqp=CAU" />
-            <p>{object.rejectedBy.length}</p>
+            <p>{object?.contributers?.length}</p>
           </div>
         </div>
       </div>
 
-      <p>{object.statement.slice(0, 70) + "...."}</p>
+      <p>{object?.statement?.slice(0, 70) + "...."}</p>
 
       <div className="buttons">
         <button

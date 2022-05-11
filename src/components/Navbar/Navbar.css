@@ -32,12 +32,12 @@
   width: 40vw;
 }
 .navbar__logo > .company__description > h1 {
-  font-size: min(2vw, 18px);
+  font-size: max(16px, 1.8vw);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .navbar__logo > .company__description > p {
-  font-size: 16px;
+  font-size: max(14px, 1.4vw);
   font-family: sans-serif;
 }
 
@@ -73,6 +73,9 @@
   .navItems {
     transform: scale(0);
     display: none;
+  }
+  .navbar__logo {
+    flex: 1;
   }
   .navbar__quoteButton {
     display: none;

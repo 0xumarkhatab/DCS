@@ -1,48 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import Button from "../Button/Button";
 import "./ProposalInformation.css";
 import { Link, useNavigate } from "react-router-dom";
-import { updateProposal } from "../../firebaseConfig";
+import { dispatchRedux, updateProposal } from "../../firebaseConfig";
 
 function ProposalInformation() {
   let proposal = useSelector((state) => state.CURRENTPROPOSAL);
   let proposals = useSelector((state) => state.PROPOSALSLIST);
   let theProposalsList = [...proposals];
   let user = useSelector((state) => state.USER);
-
+  const [options, setoptions] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    setoptions(proposal.options);
+  }, []);
 
-  function IncreaseAcceptance(id) {
-    let index = proposals.findIndex((obj) => obj.id === id);
-    let p = { ...proposals[index] };
-    p.acceptedBy.push(user);
-    theProposalsList[p.id - 1] = { ...p };
-    console.log("new proposal is ", p);
-    updateProposal(p);
+  function increaseOptionAcceptance(id) {
+    console.log("option number ", id);
+    let currentOption = { ...options[id - 1] };
+    let votedby = [...currentOption.votedby];
 
-    dispatch({
-      type: "SET__PROPOSALSLIST",
-      PROPOSALSLIST: [...theProposalsList],
-    });
+    if (votedby.includes(user.rollnumber) === true) {
+      document.getElementById("poption" + id).classList.remove("selected");
+      document.getElementById("poption" + id).classList.add("btn-success");
+      votedby = votedby.filter((item) => item !== user.rollnumber);
+      //return 0;
+    } else {
+      votedby.push(user.rollnumber);
 
-    navigate("/castVote");
+      console.log("not already voted\n");
+      document.getElementById("poption" + id).classList.remove("btn-success");
+      document.getElementById("poption" + id).classList.add("selected");
+    }
+
+    currentOption.votedby = [...votedby];
+    let updatedOptions = [...options];
+    updatedOptions[id - 1] = { ...currentOption };
+    console.log("\nvoted by ", votedby);
+
+    setoptions(updatedOptions);
+
+    // let index = proposals?.findIndex((obj) => obj.id === proposal.id);
+    // let p = { ...proposals[index] };
+
+    // let votedby_ = [...p.options[id - 1].votedby];
+    // if (votedby_.includes(user.rollnumber) === true) {
+    //   //alert("Already Voted");
+    //   votedby_ = votedby_.filter((item) => item !== user.rollnumber);
+    //   setVotedby(votedby_);
+    //   document.getElementById("poption" + id).classList.remove("selected");
+
+    //   //return 0;
+    // }
+    // console.log("votes are ", votedby_);
+    // votedby_.push(user.rollnumber);
+    // setVotedby(votedby_);
   }
-  function IncreaseRejection(id) {
-    console.log("Decreasing acceptance");
-    let index = proposals.findIndex((obj) => obj.id === id);
-    let p = { ...proposals[index] };
-    p.rejectedBy.push(user);
-    theProposalsList[index] = p;
-    console.log("new proposals are \n", proposals);
-    updateProposal(p);
 
-    dispatch({
-      type: "SET__PROPOSALSLIST",
-      PROPOSALSLIST: theProposalsList,
-    });
+  function DoneVoting() {
+    let proposal_ = { ...proposal };
+    proposal_.options = [...options];
+    if (proposal_.contributers.includes(user.rollnumber) === false) {
+      proposal_.contributers.push(user.rollnumber);
+    }
+    updateProposal(proposal_);
 
+    dispatchRedux(dispatch);
     navigate("/castVote");
   }
 
@@ -74,27 +99,35 @@ function ProposalInformation() {
             <p> You can not vote twice </p>
           </p>
         ) : (
-          <p className="proposal__buttons">
-            <Link to={"/castVote"}>
+          <p className="proposal__options">
+            <h5 className="proposal__options__header">Voting Options</h5>
+            <p className="proposal__options__list">
+              {options?.map((item) => {
+                return (
+                  <Button
+                    title={item.title}
+                    id={"poption" + item.id}
+                    key={"poption" + item.id}
+                    className={
+                      item.votedby.includes(user.rollnumber) === true
+                        ? `selected`
+                        : ``
+                    }
+                    circularTitle={item.votedby.length}
+                    variant={"success"}
+                    onClick={() => increaseOptionAcceptance(item.id)}
+                  />
+                );
+              })}
+            </p>
+            <p>
               <Button
-                disabled={proposal.disabled === true ? "true" : "false"}
-                onClick={() => {
-                  IncreaseAcceptance(proposal.id);
-                }}
-                title={"Accept"}
-                variant="success"
+                id="doneButton"
+                variant={"success"}
+                onClick={DoneVoting}
+                title="Done"
               />
-            </Link>
-
-            <Link to={"/castVote"}>
-              <Button
-                onClick={() => {
-                  IncreaseRejection(proposal.id);
-                }}
-                title={"Reject"}
-                variant="danger"
-              />
-            </Link>
+            </p>
           </p>
         )}
       </div>

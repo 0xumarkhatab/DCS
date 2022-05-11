@@ -1,0 +1,29 @@
+.add__proposal__option {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.add__proposal__option__button {
+  padding-top: 2vh;
+}
+
+.add__proposal__option__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.add__proposal__option__form > input {
+  outline: none;
+  border: none;
+  padding: 15px;
+  color: black;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.hidden {
+  display: none;
+}

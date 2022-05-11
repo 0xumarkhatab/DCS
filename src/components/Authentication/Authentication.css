@@ -28,7 +28,9 @@
 .authentication__buttons {
   display: flex;
 }
-
+.authentication__buttons > a {
+  text-decoration: none;
+}
 .authentication__buttons button {
   margin-left: 3vw;
 }

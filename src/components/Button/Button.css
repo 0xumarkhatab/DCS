@@ -3,11 +3,40 @@
   border: none;
   color: white;
   border-radius: 10px;
-  font-size: 20px;
   padding: 8px;
-  margin-top: 20px;
   background-color: black;
+  border: 1px solid var(--bg-primary);
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+button > .title {
+  font-size: 20px;
+  text-decoration: none;
+}
+.btn > .circularTitle {
+  font-size: 18px;
+  color: white;
+  width: fit-content;
+  border-radius: 30%;
+  padding: 5px;
+  border: 1px solid var(--bg-success);
+  background-color: black;
+  margin-left: 30px;
+  transition: all 2s;
+}
+.btn > .circularTitle:hover {
+  cursor: pointer;
+  background-color: var(--bg-success);
+}
+
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
 .btn-primary {
   border: 1px solid var(--bg-primary);
 }
@@ -39,4 +68,9 @@
   color: white;
 
   background: var(--bg-success);
+}
+
+.selected {
+  cursor: default;
+  background: var(--bg-primary);
 }

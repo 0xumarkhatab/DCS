@@ -22,7 +22,7 @@ function Introduction() {
         <p>We Believe in Collaboration</p>
 
         <Link to={user === null ? "/authentication" : "/castVote"}>
-          <Button title="Get Started" />
+          <Button variant="primary" key="loginButton" title="Get Started" />
         </Link>
       </div>
       {/* <div className="introduction__right">

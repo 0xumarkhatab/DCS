@@ -4,7 +4,7 @@ import "./CastVote.css";
 import ProposalInformation from "../Proposal/ProposalInformation";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { Navigate, useNavigate } from 'react-router-dom'
-import { getAcceptedProposals,getRejectedProposals } from '../Data/data'
+import { getAcceptedProposals} from '../Data/data'
 
 function CastVote() {
   const navigate=useNavigate();
@@ -41,16 +41,14 @@ console.log("\nProposals List in CastVote := ",proposalsList)
   }
 
   let acceptedIndices=getAcceptedProposals(user?.rollnumber,proposalsList);
-  let rejectedIndices=getRejectedProposals(user?.rollnumber,proposalsList);
   console.log("Accepted ",acceptedIndices);
-  console.log("rejected ",rejectedIndices);
   let filteredList=[];
    
 
   proposalsList?.map((item)=>{
     
-    if((acceptedIndices?.includes(item.id-1)===false) && (rejectedIndices?.includes(item.id-1)===false) && (item.proposedby!==user?.rollnumber) ){
-      console.log("proposal ",item.id," neither accepted nor rejected");
+    if((acceptedIndices?.includes(item.id-1)===false)&& (item.proposedby!==user?.rollnumber) ){
+      console.log("proposal ",item.id," has not been contributed\n");
       filteredList.push(item);
     }
   
@@ -62,11 +60,13 @@ console.log("\nProposals List in CastVote := ",proposalsList)
 
   
   console.log("Filtered List is ",filteredList);
+
+
   return (
     <div className="castVote">
         
         {
-          filteredList.length>0?<div className='title'>
+          filteredList?.length>0?<div className='title'>
           <h5>Here Are The New Proposals</h5>
           <p>Vote for the Better Future !!</p>
 

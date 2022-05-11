@@ -4,13 +4,13 @@
   width: 100%;
   color: white;
   padding-top: 5vh;
+  animation: fadeInOpacity 2s;
 }
 
 .signup {
-  position: absolute;
-  left: 30vw;
+  margin: 0 auto;
   height: fit-content;
-  width: 25vw;
+  width: 35vw;
   background: black;
   padding: 4vh 10vw;
   padding-bottom: 10vh;

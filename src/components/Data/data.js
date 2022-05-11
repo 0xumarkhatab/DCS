@@ -54,11 +54,10 @@ export const proposalsList = [
     let result=[];
     let index=0;
     ProposalsList?.map((item)=>{
-      let acceptedby=[...item.acceptedBy];
       if((item.proposedby===userKey))
       result.push(index)
       else{
-      acceptedby?.map((person)=>{
+      item.contributers?.map((person)=>{
         if((person.rollnumber===userKey)){
           result.push(index)
         }
@@ -74,25 +73,6 @@ export const proposalsList = [
     return result;
   }
 
-export const getRejectedProposals=(userKey,ProposalsList)=>{
-    let result=[];
-    let index=0;
-    ProposalsList?.map((item)=>{
-      let rejectedby=[...item.rejectedBy];
-      rejectedby?.map((person)=>{
-        if(person.rollnumber===userKey){
-          result.push(index)
-        }
-      }
-      
-      );
-      index+=1;
-      
-    }
-    
-    )
-    return result;
-  }
   
   
 

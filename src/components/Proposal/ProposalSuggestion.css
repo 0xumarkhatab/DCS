@@ -1,20 +1,18 @@
 .proposal__suggestion__wrapper {
   background-color: black;
   margin-top: 15vh;
-  height: 85vh;
+  height: 100vh;
   width: 100%;
   color: white;
 }
 
 .proposal__suggestion {
-  position: absolute;
-  left: 30vw;
-  top: 20vh;
-  height: 53vh;
+  margin: 0 auto;
+  height: fit-content;
   width: 25vw;
   background: black;
   padding: 100px;
-  padding-top: 50px;
+
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px var(--bg-primary);
 }
@@ -55,6 +53,18 @@
   margin-bottom: 20px;
 }
 
+.proposalOptionsAdd {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.proposalOptionsList {
+  margin-bottom: 30px;
+}
+.proposalOption {
+  display: flex;
+  justify-content: space-between;
+}
 .proposal__suggestion-btn > a > .btn-primary {
   padding: 10px;
   border: 1px solid grey;

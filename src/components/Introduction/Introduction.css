@@ -69,6 +69,11 @@
 }
 .introduction__left > a > .btn-primary {
   margin-right: 10vw;
+  margin-top: 5vh;
+  text-decoration: none;
+}
+.introduction__left > a {
+  text-decoration: none;
 }
 
 .introduction__right {

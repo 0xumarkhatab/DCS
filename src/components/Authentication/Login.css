@@ -4,14 +4,14 @@
   width: 100%;
   color: white;
   padding-top: 5vh;
+  animation: fadeInOpacity 2s;
 }
 
 .login {
-  position: absolute;
-  left: 30vw;
+  margin: 0 auto;
   padding-top: 10vh;
   height: fit-content;
-  width: 20vw;
+  width: 30vw;
   background: black;
   padding: 100px;
   padding-bottom: 10vh;

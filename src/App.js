@@ -14,7 +14,6 @@ import {dispatchProposalsList} from "./components/Data/data";
 import ProposalSuggestion from './components/Proposal/ProposalSuggestion'
 import { useEffect } from 'react'
 import AcceptedProposal from './components/Proposal/AcceptedProposal'
-import RejectedProposals from './components/Proposal/RejectedProposals'
 import {dispatchRedux, UploadProposals} from "./firebaseConfig";
 import Authentication from './components/Authentication/Authentication'
 import Signup from "./components/Authentication/Signup";
@@ -40,7 +39,6 @@ function App() {
                  <Route exact path='/proposalInformation' element={<ProposalInformation />}></Route>
                  <Route exact path="/giveProposal" element={<ProposalSuggestion />} ></Route>
                  <Route exact path="/acceptedProposals" element={<AcceptedProposal />} ></Route>
-                 <Route exact path="/rejectedProposals" element={<RejectedProposals />} ></Route>
                  <Route exact path="/authentication" element={<Authentication />} />
                  <Route exact path="/signup" element={<Signup />} />
                  
