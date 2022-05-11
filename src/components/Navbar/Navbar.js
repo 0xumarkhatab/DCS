@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch ,useSelector} from "react-redux"
 import { Link } from "react-router-dom";
 import Button from "../Button/Button"
 // import Button from "../Button/Button";
@@ -10,9 +10,11 @@ import "./Navbar.css";
 function Navbar() {
   const dispatch=useDispatch();
   let user = null;
-  // user = useSelector((state) => state?.USER);
+  user = useSelector((state) => state?.USER);
+  let nonLoggedIn=user?"":"protected__navbar";
+  
   return (
-    <div className="navbar">
+    <div className={"navbar " }>
       <div className="navbar__logo">
         <div>
           <Link to="">
@@ -25,7 +27,9 @@ function Navbar() {
           <p>Your Opinion Matters</p>
         </div>
       </div>
-      <div className="navItems">
+
+      {
+        user && <div className="navItems">
         <nav>
           <Link className="link" to="/castVote">
             Vote for Change
@@ -53,6 +57,9 @@ function Navbar() {
            
         </nav>
       </div>
+      
+      }
+      
     </div>
   );
 }

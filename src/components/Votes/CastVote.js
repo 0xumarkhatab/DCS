@@ -18,7 +18,7 @@ navigate("/");
 
 console.log("\nProposals List in CastVote := ",proposalsList)
     let user=null;
-    user = JSON.parse( localStorage.getItem("USER"))
+    user = useSelector(state=>state?.USER);
     console.log("USer is ",user );
     
         if(user===null){

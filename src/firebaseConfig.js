@@ -56,17 +56,19 @@ export async function verifyUser(user,verifier,rejector){
 
     });
     let found=false;
-
+    let theUser={};
     if(users.length>0){
      users?.map((item)=>{
         if((item.rollnumber==user.rollnumber) && (item.password===user.password)){
             found=true;
+            theUser={...item};
+
 //            return true;
 
         }
     })
 if(found===true){
-    verifier(true);
+    verifier(theUser);
     return true;
 }    
 else{

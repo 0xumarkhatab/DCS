@@ -12,15 +12,14 @@ function Login() {
   const [verified, setVerified] = useState(false);
   let loginObj;
 
-  async function postVerification() {
+  async function postVerification(theUser) {
     document.getElementById("rollnumber").innerHTML = null;
     document.getElementById("password").innerHTML = null;
-    console.log("\nLogin Obj is ", loginObj);
-    localStorage.setItem("USER", JSON.stringify(loginObj));
+    console.log("\nUser is  ", theUser);
 
     dispatch({
       type: "SET__USER",
-      USER: loginObj,
+      USER: theUser,
     });
     navigate("/castVote");
   }

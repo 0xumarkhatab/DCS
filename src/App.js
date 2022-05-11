@@ -17,8 +17,11 @@ import AcceptedProposal from './components/Proposal/AcceptedProposal'
 import {dispatchRedux, UploadProposals} from "./firebaseConfig";
 import Authentication from './components/Authentication/Authentication'
 import Signup from "./components/Authentication/Signup";
+import AdminNavbar from './components/Navbar/AdminNavbar'
 
 function App() {
+  let user=useSelector(state=>state?.USER);
+  
   const dispatch=useDispatch(); 
   //UploadProposals();
   dispatchRedux(dispatch);
@@ -31,7 +34,10 @@ function App() {
     <Router>
 
       <div className="app">
-      <Navbar/>
+      {
+        user?.type==="admin"?<AdminNavbar /> :<Navbar/>
+      }
+      
       <Routes>
                  <Route index  exact path="" element={ <Introduction/> }/>
                  <Route exact path="/" element={<Instructions/>}/>

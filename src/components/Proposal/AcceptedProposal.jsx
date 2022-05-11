@@ -12,7 +12,7 @@ function AcceptedProposal() {
   let proposalsList = useSelector((state) => state?.PROPOSALSLIST);
   let user = useSelector((state) => state?.USER);
   let ProposalsList;
-
+  console.log("Cast.js , the user is ", user);
   if (proposalsList) ProposalsList = [...proposalsList];
 
   let navigate = useNavigate();
@@ -38,6 +38,9 @@ function AcceptedProposal() {
     res.push(ProposalsList[indices[i]]);
   }
   ProposalsList = [...res];
+  ProposalsList = ProposalsList.sort(function (a, b) {
+    return b.contributers.length - a.contributers.length;
+  });
 
   return (
     <div className="acceptedProposals">
