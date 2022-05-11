@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom";
+import Button from "../Button/Button"
 // import Button from "../Button/Button";
 
 import "./Navbar.css";
 // import { useSelector } from "react-redux/es/exports";
 
 function Navbar() {
+  const dispatch=useDispatch();
   let user = null;
   // user = useSelector((state) => state?.USER);
   return (
@@ -39,6 +42,14 @@ function Navbar() {
             <Button title={"Welcome ," + user.rollnumber} />
           )}
            */}
+           <Link className="link" to="/">
+             <Button
+             Img={"./logout.png"}
+              onClick={()=>dispatch({
+               type:"SET__USER",
+               USER:null,
+             })} id="logoutButton" key="logoutButton" variant={"danger"}/>
+           </Link>
            
         </nav>
       </div>

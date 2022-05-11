@@ -22,9 +22,10 @@
   align-items: center;
 }
 .navbar__logo > div > a > img {
-  width: 6.6rem;
-  height: 6.6rem;
+  width: 6rem;
+  height: 6rem;
   object-fit: contain;
+  margin-right: 20px;
 }
 .navbar__logo > .company__description {
   display: flex;
@@ -48,6 +49,8 @@
 }
 .navItems > nav {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .navItems > nav > a {
   padding: 1rem;

@@ -6,7 +6,6 @@
   padding: 8px;
   background-color: black;
   border: 1px solid var(--bg-primary);
-  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +15,13 @@ button > .title {
   font-size: 20px;
   text-decoration: none;
 }
+
+.btn > .icon {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
 .btn > .circularTitle {
   font-size: 18px;
   color: white;

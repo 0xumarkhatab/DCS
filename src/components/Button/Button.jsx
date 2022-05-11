@@ -8,6 +8,7 @@ function Button({
   className,
   circularTitle,
   id,
+  Img,
   key,
 }) {
   let props = {};
@@ -33,6 +34,7 @@ function Button({
         <p>{title}</p>
       </div>
       {circularTitle && <div className="circularTitle">{circularTitle}</div>}
+      {Img && <img className="icon" src={Img} />}
     </button>
   );
 }
