@@ -5,12 +5,15 @@ function Proposal({ onClickHandler, object, disabled }) {
   return (
     <div className="proposal">
       <p>
-        <pre>
+        <p>
           Proposal Id <b>{object.id}</b>{" "}
-        </pre>
-        <pre>
+        </p>
+        <p>
           Proposal By <b>{object.proposedby}</b>{" "}
-        </pre>
+        </p>
+        <p className="proposal__status ">
+          <p className={object.status}>{object.status}</p>
+        </p>
       </p>
 
       <div className="proposal__title">

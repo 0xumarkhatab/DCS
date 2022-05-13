@@ -13,6 +13,11 @@
   box-shadow: 1px 1px 1px 0.1px var(--bg-primary);
   background-color: black;
 }
+
+.appMode {
+  padding: 4px;
+  border-bottom: 1px solid var(--bg-success);
+}
 .navbar::-webkit-scrollbar {
   display: none;
 }

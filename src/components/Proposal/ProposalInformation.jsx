@@ -59,18 +59,36 @@ function ProposalInformation() {
     // setVotedby(votedby_);
   }
 
+  function approve() {
+    let theProposal = { ...proposal };
+    theProposal.status = "listed";
+    ShowChanges(theProposal);
+  }
+  function reject() {
+    let theProposal = { ...proposal };
+    theProposal.status = "rejected";
+    updateProposal(theProposal);
+    dispatchRedux(dispatch);
+    ShowChanges(theProposal);
+  }
+
   function DoneVoting() {
     let proposal_ = { ...proposal };
     proposal_.options = [...options];
     if (proposal_.contributers.includes(user.rollnumber) === false) {
       proposal_.contributers.push(user.rollnumber);
     }
+    ShowChanges(proposal_);
+  }
+
+  function ShowChanges(proposal_) {
     updateProposal(proposal_);
 
     dispatchRedux(dispatch);
     navigate("/castVote");
   }
 
+  console.log(" thse user type is -", user.type, "-");
   return (
     <div className="proposalInformation">
       <div className="proposal__heading">
@@ -93,42 +111,61 @@ function ProposalInformation() {
           <h5>Description</h5>
           <p>{proposal.statement}</p>
         </p>
-
+        {user.type == "admin" && (
+          <p className="proposal__options">
+            <Button
+              title={"Approve"}
+              variant={"success"}
+              key="approveButton"
+              id="approvedButton"
+              onClick={approve}
+            />
+            <Button
+              title={"Reject"}
+              variant={"danger"}
+              key="rejectButton"
+              id="rejectButton"
+              onClick={reject}
+            />
+          </p>
+        )}
         {proposal.disabled || proposal.proposedby == user.rollnumber ? (
           <p className="already__contributed">
             <p> You can not vote twice </p>
           </p>
         ) : (
-          <p className="proposal__options">
-            <h5 className="proposal__options__header">Voting Options</h5>
-            <p className="proposal__options__list">
-              {options?.map((item) => {
-                return (
-                  <Button
-                    title={item.title}
-                    id={"poption" + item.id}
-                    key={"poption" + item.id}
-                    className={
-                      item.votedby.includes(user.rollnumber) === true
-                        ? `selected`
-                        : ``
-                    }
-                    circularTitle={item.votedby.length}
-                    variant={"success"}
-                    onClick={() => increaseOptionAcceptance(item.id)}
-                  />
-                );
-              })}
+          user.type != "admin" && (
+            <p className="proposal__options">
+              <h5 className="proposal__options__header">Voting Options</h5>
+              <p className="proposal__options__list">
+                {options?.map((item) => {
+                  return (
+                    <Button
+                      title={item.title}
+                      id={"poption" + item.id}
+                      key={"poption" + item.id}
+                      className={
+                        item.votedby.includes(user.rollnumber) === true
+                          ? `selected`
+                          : ``
+                      }
+                      circularTitle={item.votedby.length}
+                      variant={"success"}
+                      onClick={() => increaseOptionAcceptance(item.id)}
+                    />
+                  );
+                })}
+              </p>
+              <p>
+                <Button
+                  id="doneButton"
+                  variant={"success"}
+                  onClick={DoneVoting}
+                  title="Done"
+                />
+              </p>
             </p>
-            <p>
-              <Button
-                id="doneButton"
-                variant={"success"}
-                onClick={DoneVoting}
-                title="Done"
-              />
-            </p>
-          </p>
+          )
         )}
       </div>
     </div>

@@ -25,9 +25,40 @@
   display: flex;
 }
 
-.proposal > p > pre {
+.proposal > p > p {
   font-size: 18px;
 }
+
+.proposal > p .proposal__status > p {
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+.proposal > p .proposal__status > p:hover {
+  background-color: var(--bg-primary);
+  color: white;
+}
+.proposal > p .proposal__status > .pending {
+  border: 1px solid var(--bg-pending);
+  color: var(--bg-pending);
+}
+
+.proposal > p .proposal__status > .listed {
+  border: 1px solid var(--bg-information);
+  color: white;
+}
+
+.proposal > p .proposal__status > .accepted {
+  color: var(--bg-success);
+  border: 1px solid var(--bg-success);
+}
+.proposal > p .proposal__status > .rejected {
+  color: var(--bg-danger);
+  border: 1px solid var(--bg-rejected);
+}
+
 .prposal__votes {
   display: flex;
   justify-content: center;

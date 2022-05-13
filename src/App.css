@@ -12,6 +12,8 @@
   --bg-primary: aqua;
   --bg-success: rgb(47, 239, 47);
   --bg-danger: rgb(228, 57, 57);
+  --bg-pending: rgb(234, 255, 0);
+  --bg-information: grey;
 }
 
 @keyframes fadeInOpacity {

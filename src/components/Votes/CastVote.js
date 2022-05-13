@@ -5,13 +5,15 @@ import ProposalInformation from "../Proposal/ProposalInformation";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { Navigate, useNavigate } from 'react-router-dom'
 import { getAcceptedProposals} from '../Data/data'
+import { dispatchRedux } from '../../firebaseConfig'
 
 function CastVote() {
+
   const navigate=useNavigate();
   const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();  
   const proposalsList=useSelector(state=>state?.PROPOSALSLIST);
-
+  dispatchRedux(dispatch);
 if(proposalsList===undefined){
 navigate("/");
 }
@@ -51,8 +53,7 @@ console.log("\nProposals List in CastVote := ",proposalsList)
       console.log("proposal ",item.id," has not been contributed\n");
       filteredList.push(item);
     }
-  
-  
+    
   }) ;
 
   
@@ -60,9 +61,15 @@ console.log("\nProposals List in CastVote := ",proposalsList)
 
   
   console.log("Filtered List is ",filteredList);
+
   filteredList=filteredList.sort(function (a,b){
     return b.contributers.length-a.contributers.length;
   })
+  if(user?.type==="admin")
+    filteredList=filteredList.filter(obj=>obj.status==="pending");
+  else 
+    filteredList=filteredList.filter(obj=>obj.status==="listed");
+    console.log("filtered lists",filteredList);
 
   return (
     <div className="castVote">

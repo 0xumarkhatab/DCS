@@ -47,11 +47,14 @@ function ProposalSuggestion() {
     let proposalObj = {
       proposedby: user.rollnumber,
       title: title,
+      status: "pending",
       statement: description,
       id: ProposalsList ? ProposalsList.length + 1 : 1,
       contributers: [user.rollnumber],
       options: options,
     };
+    document.getElementById("proposal__validation").innerHTML =
+      "Proposal is added in pending queue\nWait for the Admin's Approval.";
 
     document.getElementById("title").value = null;
     document.getElementById("description").value = null;
@@ -62,7 +65,10 @@ function ProposalSuggestion() {
       type: "SET__PROPOSALSLIST",
       PROPOSALSLIST: theProposalsList,
     });
-    navigate("/castVote");
+
+    setTimeout(() => {
+      navigate("/castVote");
+    }, 2000);
   }
 
   return (
@@ -130,7 +136,9 @@ function ProposalSuggestion() {
         <div className="proposal__suggestion-btn">
           {/* <Link to="/castVote"> */}
           <Button
-            onClick={proposalHandler}
+            onClick={(e) => {
+              proposalHandler(e);
+            }}
             variant="success"
             title={"Propose"}
           ></Button>
