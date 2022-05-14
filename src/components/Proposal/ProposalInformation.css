@@ -54,11 +54,17 @@ p.proposal__options > a > .btn {
 .proposal__options__list {
   display: grid;
   margin-left: 10vw;
+  width: 60vw;
+  grid-template-columns: auto auto;
 }
 .proposal__options__list > button {
   margin-left: 30px;
+  margin-top: 30px;
 }
 
 .already__contributed {
   margin-left: 50vw;
+}
+.accepted__message {
+  margin-left: 10vw;
 }

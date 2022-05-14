@@ -13,9 +13,11 @@ function CastVote() {
   const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();  
   const proposalsList=useSelector(state=>state?.PROPOSALSLIST);
-  dispatchRedux(dispatch);
+  dispatchRedux();
+  
 if(proposalsList===undefined){
-navigate("/");
+
+  navigate("/");
 }
 
 console.log("\nProposals List in CastVote := ",proposalsList)
@@ -80,7 +82,7 @@ console.log("\nProposals List in CastVote := ",proposalsList)
           <p>Vote for the Better Future !!</p>
 
         </div>
-:<div className='title'><h5>There Are No New Proposals For You !</h5></div>
+:<div className='empty__proposals'><h5>There Are No New Proposals For You !</h5></div>
         }
 
         <div className="proposals__list">

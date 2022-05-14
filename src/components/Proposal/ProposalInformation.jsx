@@ -62,6 +62,9 @@ function ProposalInformation() {
   function approve() {
     let theProposal = { ...proposal };
     theProposal.status = "listed";
+    var finishTime = new Date(new Date());
+    finishTime.setDate(finishTime.getDate() + 3);
+    theProposal.finishTime = finishTime.getTime();
     ShowChanges(theProposal);
   }
   function reject() {
@@ -88,7 +91,6 @@ function ProposalInformation() {
     navigate("/castVote");
   }
 
-  console.log(" thse user type is -", user.type, "-");
   return (
     <div className="proposalInformation">
       <div className="proposal__heading">
@@ -134,7 +136,8 @@ function ProposalInformation() {
             <p> You can not vote twice </p>
           </p>
         ) : (
-          user.type != "admin" && (
+          user.type != "admin" &&
+          proposal.status !== "accepted" && (
             <p className="proposal__options">
               <h5 className="proposal__options__header">Voting Options</h5>
               <p className="proposal__options__list">
@@ -167,6 +170,13 @@ function ProposalInformation() {
             </p>
           )
         )}
+        {user.type != "admin" &&
+          proposal.proposedby !== user?.rollnumber &&
+          proposal.status === "accepted" && (
+            <div className="accepted__message">
+              <h6> Proposal is No Longer Accepting the Responses</h6>
+            </div>
+          )}
       </div>
     </div>
   );

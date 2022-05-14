@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 10px;
   padding: 30px;
+  padding-top: 10px;
   border: 1px solid grey;
-  height: 50vh;
+  height: 58vh;
   width: 20vw;
   margin-left: 3vw;
   border-radius: 10px;
@@ -27,6 +28,7 @@
 
 .proposal > p > p {
   font-size: 18px;
+  margin-top: 10px;
 }
 
 .proposal > p .proposal__status > p {
@@ -36,10 +38,7 @@
   margin-top: 20px;
   text-transform: capitalize;
 }
-.proposal > p .proposal__status > p:hover {
-  background-color: var(--bg-primary);
-  color: white;
-}
+
 .proposal > p .proposal__status > .pending {
   border: 1px solid var(--bg-pending);
   color: var(--bg-pending);
@@ -123,4 +122,13 @@ button.success {
 button.danger {
   background-color: red;
   color: white;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.d-flex > i {
+  margin-left: 20px;
 }
