@@ -49,10 +49,10 @@ function Navbar() {
            <Link className="link" to="/">
              <Button
              Img={"./logout.png"}
-              onClick={()=>dispatch({
-               type:"SET__USER",
-               USER:null,
-             })} id="logoutButton" key="logoutButton" variant={"danger"}/>
+              onClick={()=>dispatch(  dispatch({
+                type: "CLEAR__STATE",
+              })
+            )} id="logoutButton" key="logoutButton" variant={"danger"}/>
            </Link>
            
         </nav>

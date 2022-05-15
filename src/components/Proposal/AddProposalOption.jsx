@@ -17,7 +17,7 @@ function AddProposalOption({ options, setOptions }) {
     options_.push({
       title: option,
       id: options.length + 1,
-      votedby: [user.rollnumber],
+      votedby: [],
     });
     setOptions(options_);
     setShow(false);

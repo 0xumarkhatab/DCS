@@ -9,6 +9,7 @@ import AddProposalOption from "./AddProposalOption";
 function ProposalSuggestion() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState([]);
   let ProposalsList = useSelector((state) => state?.PROPOSALSLIST);
   let theProposalsList = [];
@@ -38,23 +39,22 @@ function ProposalSuggestion() {
     if (title === null || description === null) {
       document.getElementById("proposal__validation").innerHTML =
         "Kindly Fill the fields Correctly";
+      setLoading(false);
       return;
     }
-
-    let acceptedUsers = [];
-    acceptedUsers.push(user);
 
     let proposalObj = {
       proposedby: user.rollnumber,
       title: title,
       status: "pending",
       statement: description,
-      id: ProposalsList ? ProposalsList.length + 1 : 1,
-      contributers: [user.rollnumber],
+      id: "proposal__" + new Date().getTime(),
+      contributers: [],
       options: options,
     };
-    document.getElementById("proposal__validation").innerHTML =
-      "Proposal is added in pending queue\nWait for the Admin's Approval.";
+    document.getElementById(
+      "proposal__validation"
+    ).innerHTML = `<p className='success'>Proposal is added in pending queue\nWait for the Admin's Approval.</p>`;
 
     document.getElementById("title").value = null;
     document.getElementById("description").value = null;
@@ -65,7 +65,6 @@ function ProposalSuggestion() {
       type: "SET__PROPOSALSLIST",
       PROPOSALSLIST: theProposalsList,
     });
-
     setTimeout(() => {
       navigate("/castVote");
     }, 2000);
@@ -119,7 +118,6 @@ function ProposalSuggestion() {
                       key={"option__" + item.id}
                       title={item.title}
                       variant="success"
-                      onClick={console.log(item.title + " is votes\n\n")}
                     />
                     <Button
                       key={"delete__" + item.id}
@@ -137,10 +135,11 @@ function ProposalSuggestion() {
           {/* <Link to="/castVote"> */}
           <Button
             onClick={(e) => {
+              setLoading(true);
               proposalHandler(e);
             }}
             variant="success"
-            title={"Propose"}
+            title={loading ? "Proposing.." : "Propose"}
           ></Button>
           {/* </Link>
            */}

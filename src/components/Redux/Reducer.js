@@ -19,6 +19,7 @@ const reducer=(state=initialState,action)=>{
                 USER : action.USER,
             }
             break;
+            
         case "SET__PROPOSALSLIST":
             return {
                 ...state,
@@ -29,6 +30,11 @@ const reducer=(state=initialState,action)=>{
             return {
                 ...state,
                 CURRENTPROPOSAL:action.CURRENTPROPOSAL,
+            }
+            break;
+        case "CLEAR__STATE":
+            return {
+                initialState
             }
             break;
         default:

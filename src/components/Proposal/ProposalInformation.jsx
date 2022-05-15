@@ -97,45 +97,40 @@ function ProposalInformation() {
           <h5>Description</h5>
           <p>{proposal.statement}</p>
         </p>
-        {proposal.disabled || proposal.proposedby == user.rollnumber ? (
-          <p className="already__contributed">
-            <p> You can not vote twice </p>
-          </p>
-        ) : (
-          proposal.status !== "accepted" && (
-            <p className="proposal__options">
-              <h5 className="proposal__options__header">Voting Options</h5>
-              <p className="proposal__options__list">
-                {options?.map((item) => {
-                  return (
-                    <Button
-                      title={item.title}
-                      id={"poption" + item.id}
-                      key={"poption" + item.id}
-                      className={
-                        item.votedby.includes(user.rollnumber) === true
-                          ? `selected`
-                          : ``
-                      }
-                      circularTitle={item.votedby.length}
-                      variant={"success"}
-                      onClick={() => increaseOptionAcceptance(item.id)}
-                    />
-                  );
-                })}
-              </p>
-              <div className="voteButton">
-                <Button
-                  id="voteButton"
-                  key={"voteButton"}
-                  variant={"success"}
-                  onClick={DoneVoting}
-                  title="Save Vote Selection"
-                />
-              </div>
+        {proposal.status !== "accepted" && (
+          <p className="proposal__options">
+            <h5 className="proposal__options__header">Voting Options</h5>
+            <p className="proposal__options__list">
+              {options?.map((item) => {
+                return (
+                  <Button
+                    title={item.title}
+                    id={"poption" + item.id}
+                    key={"poption" + item.id}
+                    className={
+                      item.votedby.includes(user.rollnumber) === true
+                        ? `selected`
+                        : ``
+                    }
+                    circularTitle={item.votedby.length}
+                    variant={"success"}
+                    onClick={() => increaseOptionAcceptance(item.id)}
+                  />
+                );
+              })}
             </p>
-          )
+            <div className="voteButton">
+              <Button
+                id="voteButton"
+                key={"voteButton"}
+                variant={"success"}
+                onClick={DoneVoting}
+                title="Save Vote Selection"
+              />
+            </div>
+          </p>
         )}
+
         {user.type == "admin" && (
           <p className="proposal__options">
             <Button
