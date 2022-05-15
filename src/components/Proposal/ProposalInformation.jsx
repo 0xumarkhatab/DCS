@@ -41,22 +41,6 @@ function ProposalInformation() {
     console.log("\nvoted by ", votedby);
 
     setoptions(updatedOptions);
-
-    // let index = proposals?.findIndex((obj) => obj.id === proposal.id);
-    // let p = { ...proposals[index] };
-
-    // let votedby_ = [...p.options[id - 1].votedby];
-    // if (votedby_.includes(user.rollnumber) === true) {
-    //   //alert("Already Voted");
-    //   votedby_ = votedby_.filter((item) => item !== user.rollnumber);
-    //   setVotedby(votedby_);
-    //   document.getElementById("poption" + id).classList.remove("selected");
-
-    //   //return 0;
-    // }
-    // console.log("votes are ", votedby_);
-    // votedby_.push(user.rollnumber);
-    // setVotedby(votedby_);
   }
 
   function approve() {
@@ -113,30 +97,11 @@ function ProposalInformation() {
           <h5>Description</h5>
           <p>{proposal.statement}</p>
         </p>
-        {user.type == "admin" && (
-          <p className="proposal__options">
-            <Button
-              title={"Approve"}
-              variant={"success"}
-              key="approveButton"
-              id="approvedButton"
-              onClick={approve}
-            />
-            <Button
-              title={"Reject"}
-              variant={"danger"}
-              key="rejectButton"
-              id="rejectButton"
-              onClick={reject}
-            />
-          </p>
-        )}
         {proposal.disabled || proposal.proposedby == user.rollnumber ? (
           <p className="already__contributed">
             <p> You can not vote twice </p>
           </p>
         ) : (
-          user.type != "admin" &&
           proposal.status !== "accepted" && (
             <p className="proposal__options">
               <h5 className="proposal__options__header">Voting Options</h5>
@@ -159,17 +124,37 @@ function ProposalInformation() {
                   );
                 })}
               </p>
-              <p>
+              <div className="voteButton">
                 <Button
-                  id="doneButton"
+                  id="voteButton"
+                  key={"voteButton"}
                   variant={"success"}
                   onClick={DoneVoting}
-                  title="Done"
+                  title="Save Vote Selection"
                 />
-              </p>
+              </div>
             </p>
           )
         )}
+        {user.type == "admin" && (
+          <p className="proposal__options">
+            <Button
+              title={"Approve"}
+              variant={"success"}
+              key="approveButton"
+              id="approvedButton"
+              onClick={approve}
+            />
+            <Button
+              title={"Reject"}
+              variant={"danger"}
+              key="rejectButton"
+              id="rejectButton"
+              onClick={reject}
+            />
+          </p>
+        )}
+
         {user.type != "admin" &&
           proposal.proposedby !== user?.rollnumber &&
           proposal.status === "accepted" && (

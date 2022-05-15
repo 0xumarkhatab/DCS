@@ -27,16 +27,6 @@ function Proposal({ onClickHandler, object, disabled }) {
     // what's left is seconds
     var seconds = delta % 60; // in theory the modulus is not required
     seconds = seconds.toFixed(0);
-    console.log(
-      days,
-      " days ",
-      hours,
-      " hours ",
-      minutes,
-      " minutes ",
-      seconds,
-      " seconds\n"
-    );
     var timeString =
       "\n" +
       days +
@@ -59,12 +49,6 @@ function Proposal({ onClickHandler, object, disabled }) {
 
     setProposalEndingTime(theTime);
   });
-  console.log(
-    " \n\n\t\tfinish:= ",
-    object.finishTime,
-    "\t current",
-    new Date().getTime()
-  );
 
   if (
     object.status !== "accepted" &&
@@ -121,7 +105,20 @@ function Proposal({ onClickHandler, object, disabled }) {
       </div>
 
       <p>{object?.statement?.slice(0, 70) + "...."}</p>
-
+      <div className="proposal__options">
+        {object?.options.map((option, index) => {
+          if (index > 3) return "";
+          else {
+            return (
+              <Button
+                title={option.title}
+                key={"voption" + option.id}
+                variant={"success"}
+              />
+            );
+          }
+        })}
+      </div>
       <div className="buttons">
         <button
           onClick={() => {

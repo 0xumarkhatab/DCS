@@ -124,6 +124,11 @@ button.danger {
   color: white;
 }
 
+.proposal__options {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
 .d-flex {
   display: flex;
   justify-content: center;
