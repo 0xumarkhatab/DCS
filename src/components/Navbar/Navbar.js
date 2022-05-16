@@ -38,7 +38,7 @@ function Navbar() {
             Propose Change
           </Link>
           <Link className="link" to="/acceptedProposals">
-            Accepted Proposals
+            Contributed Proposals
           </Link>
           {/* {user === null ? (
             ""

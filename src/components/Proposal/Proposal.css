@@ -6,7 +6,7 @@
   padding: 30px;
   padding-top: 10px;
   border: 1px solid grey;
-  height: 58vh;
+  height: fit-content;
   width: 20vw;
   margin-left: 3vw;
   border-radius: 10px;
