@@ -48,7 +48,7 @@ function ProposalSuggestion() {
       title: title,
       status: "pending",
       statement: description,
-      id: "proposal__" + new Date().getTime(),
+      id: new Date().getTime(),
       contributers: [],
       options: options,
     };

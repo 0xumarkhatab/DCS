@@ -13,8 +13,17 @@ function Login() {
   let loginObj;
 
   async function postVerification(theUser) {
-    document.getElementById("rollnumber").innerHTML = null;
-    document.getElementById("password").innerHTML = null;
+    if (
+      document.getElementById("rollnumber") !== null ||
+      document.getElementById("rollnumber") !== undefined
+    )
+      document.getElementById("rollnumber").innerHTML = null;
+
+    if (
+      document.getElementById("password") !== null ||
+      document.getElementById("password") !== undefined
+    )
+      document.getElementById("password").innerHTML = null;
     console.log("\nUser is  ", theUser);
 
     dispatch({
@@ -32,11 +41,20 @@ function Login() {
   }
 
   async function loginHandler(e) {
-    document.getElementById("validation").innerHTML = "Verifying...";
+    if (
+      document.getElementById("validation") !== null ||
+      document.getElementById("validation") !== undefined
+    )
+      document.getElementById("validation").innerHTML = "Verifying...";
 
     if (id === null || password === null) {
-      document.getElementById("validation").innerHTML =
-        "Kindly Fill the fields Correctly";
+      if (
+        document.getElementById("validation") !== null ||
+        document.getElementById("validation") !== undefined
+      )
+        document.getElementById("validation").innerHTML =
+          "Kindly Fill the fields Correctly";
+
       return 0;
     }
 

@@ -7,7 +7,7 @@
   padding: 0 10vh 5vh 0;
 }
 .authentication__instructions p {
-  font-size: 20px;
+  font-size: min(20px, 3vw);
   letter-spacing: 3px;
   font-weight: 300;
   line-height: 2rem;

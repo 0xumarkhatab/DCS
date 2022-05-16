@@ -3,7 +3,11 @@ import "./Introduction.css";
 // import Typical from "react-typical";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchRedux } from "../../firebaseConfig";
+import { doc, onSnapshot } from "@firebase/firestore";
+import { db } from "../../firebaseConfig";
+
 function Introduction() {
   let user = null;
   user = useSelector((state) => state?.USER);

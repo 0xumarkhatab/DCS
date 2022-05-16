@@ -20,17 +20,18 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Add a new document in collection "user"
-const db=getFirestore();
+export const db=getFirestore();
     
 
 export async function updateProposal(p){
     console.log("Updating proposal",p);
-    await setDoc(doc(db, "Proposal","proposal__"+p.id),p)
+    await setDoc(doc(db, "Proposals","proposal__"+p.id),p)
+    return true
 }
 
 export async function UploadProposals(p){
     proposalsList.map(async (p)=>{
-        await setDoc(doc(db, "Proposal","proposal__"+p.id),p)    
+        await setDoc(doc(db, "Proposals","proposal__"+p.id),p)    
     })
     
 }
@@ -84,7 +85,7 @@ else{
 
 async function dispatchProposals(){
 
-    const q = query(collection(db, "Proposal"));
+    const q = query(collection(db, "Proposals"));
 
     const querySnapshot = await getDocs(q);
     let proposals=[];
@@ -111,11 +112,12 @@ export const  dispatchRedux=async (dispatch)=>{
     await dispatchProposals();
     
     console.log("\n\n\n\t\t\tType is ",typeof(currentProposalsSnapshot),currentProposalsSnapshot,"\n\n\n")
-if(currentProposalsSnapshot){
+if(currentProposalsSnapshot!==undefined && currentProposalsSnapshot!==null){
     dispatch({
         type:"SET__PROPOSALSLIST",
         PROPOSALSLIST:currentProposalsSnapshot
     })
+    return true;
 
 }
     

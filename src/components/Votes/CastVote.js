@@ -13,7 +13,6 @@ function CastVote() {
   const [selected, setSelected] = useState(false);
   const dispatch = useDispatch();  
   const proposalsList=useSelector(state=>state?.PROPOSALSLIST);
-  dispatchRedux();
   
 if(proposalsList===undefined){
 

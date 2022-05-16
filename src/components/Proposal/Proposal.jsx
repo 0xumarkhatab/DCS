@@ -107,7 +107,7 @@ function Proposal({ onClickHandler, object, disabled }) {
       <p>{object?.statement?.slice(0, 70) + "...."}</p>
       <div className="proposal__options">
         {object?.options.map((option, index) => {
-          if (index > 3) return "";
+          if (index > 1) return "";
           else {
             return (
               <Button
@@ -118,6 +118,7 @@ function Proposal({ onClickHandler, object, disabled }) {
             );
           }
         })}
+        <p>+more...</p>
       </div>
       <div className="buttons">
         <button

@@ -8,11 +8,12 @@ import { dispatchRedux, updateProposal } from "../../firebaseConfig";
 function ProposalInformation() {
   let proposal = useSelector((state) => state.CURRENTPROPOSAL);
   let proposals = useSelector((state) => state.PROPOSALSLIST);
-  let theProposalsList = [...proposals];
-  let user = useSelector((state) => state.USER);
+  const [loading, setLoading] = useState(false);
   const [options, setoptions] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  let theProposalsList = [...proposals];
+  let user = useSelector((state) => state.USER);
   useEffect(() => {
     setoptions(proposal.options);
   }, []);
@@ -68,10 +69,9 @@ function ProposalInformation() {
     ShowChanges(proposal_);
   }
 
-  function ShowChanges(proposal_) {
-    updateProposal(proposal_);
-
-    dispatchRedux(dispatch);
+  async function ShowChanges(proposal_) {
+    await updateProposal(proposal_);
+    await dispatchRedux(dispatch);
     navigate("/castVote");
   }
 
@@ -124,8 +124,15 @@ function ProposalInformation() {
                 id="voteButton"
                 key={"voteButton"}
                 variant={"success"}
-                onClick={DoneVoting}
-                title="Save Vote Selection"
+                onClick={() => {
+                  setLoading(true);
+                  DoneVoting();
+                }}
+                title={
+                  loading === false
+                    ? "Save Vote Selection"
+                    : "Saving .. Please wait"
+                }
               />
             </div>
           </p>

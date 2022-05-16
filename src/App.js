@@ -19,16 +19,28 @@ import Authentication from './components/Authentication/Authentication'
 import Signup from "./components/Authentication/Signup";
 import AdminNavbar from './components/Navbar/AdminNavbar'
 
+import { collection, query, where, onSnapshot } from "@firebase/firestore";
+import {db} from "./firebaseConfig"
 function App() {
-  let user=useSelector(state=>state?.USER);
-  
+  let user=useSelector(state=>state?.USER);  
   const dispatch=useDispatch(); 
-  //UploadProposals();
-  dispatchRedux(dispatch);
+
+const q = query(collection(db, "Proposals"));
+let list=[];
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  const cities = [];
+  querySnapshot.forEach((doc) => {
+      list.push(doc.data())
+  });
   
+  dispatch({
+    type:"SET__PROPOSALSLIST",
+    PROPOSALSLIST:list,
+  })
+  console.log("the snapshot is ",list);
 
-
-
+});
+    
 
   return (
     <Router>
