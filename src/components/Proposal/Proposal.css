@@ -127,6 +127,11 @@ button.danger {
 .proposal__options {
   display: grid;
   grid-template-columns: auto auto;
+  margin-top: 20px;
+}
+.proposal__options > p {
+  margin: 20px;
+  margin-left: 0;
 }
 
 .d-flex {

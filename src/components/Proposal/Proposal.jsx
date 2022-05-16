@@ -118,6 +118,7 @@ function Proposal({ onClickHandler, object, disabled }) {
             );
           }
         })}
+        <br />
         <p>+more...</p>
       </div>
       <div className="buttons">
