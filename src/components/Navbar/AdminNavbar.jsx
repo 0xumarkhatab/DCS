@@ -41,7 +41,7 @@ function AdminNavbar() {
               Propose Change
             </Link>
 
-            <Link className="link" to="/acceptedProposals">
+            <Link className="link" to="/contributed">
               Authorized Proposals
             </Link>
             {/* {user === null ? (

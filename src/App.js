@@ -13,7 +13,6 @@ import {useSelector,useDispatch} from "react-redux";
 import {dispatchProposalsList} from "./components/Data/data";
 import ProposalSuggestion from './components/Proposal/ProposalSuggestion'
 import { useEffect } from 'react'
-import AcceptedProposal from './components/Proposal/AcceptedProposal'
 import {dispatchRedux, UploadProposals} from "./firebaseConfig";
 import Authentication from './components/Authentication/Authentication'
 import Signup from "./components/Authentication/Signup";
@@ -21,6 +20,7 @@ import AdminNavbar from './components/Navbar/AdminNavbar'
 
 import { collection, query, where, onSnapshot } from "@firebase/firestore";
 import {db} from "./firebaseConfig"
+import Contributed from './components/Proposal/Contributed'
 function App() {
   let user=useSelector(state=>state?.USER);  
   const dispatch=useDispatch(); 
@@ -56,7 +56,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
                  <Route exact path='/castVote' element={< CastVote  />}></Route>
                  <Route exact path='/proposalInformation' element={<ProposalInformation />}></Route>
                  <Route exact path="/giveProposal" element={<ProposalSuggestion />} ></Route>
-                 <Route exact path="/acceptedProposals" element={<AcceptedProposal />} ></Route>
+                 <Route exact path="/contributed" element={<Contributed />} ></Route>
                  <Route exact path="/authentication" element={<Authentication />} />
                  <Route exact path="/signup" element={<Signup />} />
                  
