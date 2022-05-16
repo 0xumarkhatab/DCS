@@ -27,7 +27,7 @@ function AdminNavbar() {
           <p>Your Opinion Matters</p>
         </div>
         <div className="appMode">
-          <p>Admin Panel</p>
+          <p>Admin Mode</p>
         </div>
       </div>
 
@@ -42,7 +42,7 @@ function AdminNavbar() {
             </Link>
 
             <Link className="link" to="/acceptedProposals">
-              Accepted Proposals
+              Authorized Proposals
             </Link>
             {/* {user === null ? (
             ""

@@ -54,17 +54,9 @@ export const proposalsList = [
     let result=[];
     let index=0;
     ProposalsList?.map((item)=>{
-      if((item.proposedby===userKey))
+      if((item.proposedby===userKey) || (item.contributers.includes(userKey)) )
       result.push(index)
-      else{
-      item.contributers?.map((person)=>{
-        if((person.rollnumber===userKey)){
-          result.push(index)
-        }
-      }
       
-      );
-    }
       index+=1;
       
     }

@@ -46,7 +46,7 @@ function AcceptedProposal() {
     <div className="acceptedProposals">
       {proposalsList?.length > 0 && (
         <div className="title">
-          <h5>Accepted and Proposed Proposals</h5>{" "}
+          <h5> Contributed Proposals</h5>{" "}
         </div>
       )}
       {user === null && alert("Kindly Login First !")}
@@ -54,7 +54,7 @@ function AcceptedProposal() {
       {ProposalsList?.length === 0 ? (
         <div className="empty__proposals">
           {" "}
-          <h5>No Accepted Proposals</h5>{" "}
+          <h5>No Contributions have been made</h5>{" "}
         </div>
       ) : (
         <div className="acceptedProposalsList">
