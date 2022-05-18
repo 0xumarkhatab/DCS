@@ -7,7 +7,7 @@ import { verifyUser } from "../../firebaseConfig";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [id, setId] = useState(null);
+  const [rollnumber, setRollnumber] = useState("L-");
   const [password, setPassword] = useState(null);
   const [verified, setVerified] = useState(false);
   let loginObj;
@@ -49,7 +49,7 @@ function Login() {
     )
       document.getElementById("validation").innerHTML = "Verifying...";
 
-    if (id === null || password === null) {
+    if (rollnumber === null || password === null) {
       if (
         document.getElementById("validation") !== null ||
         document.getElementById("validation") !== undefined
@@ -61,7 +61,7 @@ function Login() {
     }
 
     loginObj = {
-      rollnumber: id,
+      rollnumber: rollnumber,
       password: password,
     };
 
@@ -71,6 +71,16 @@ function Login() {
     //   setTimeout(() => {
     //     navigate("/");
     //   }, 1);
+  }
+  function capitalize(e) {
+    // document.getElementById("rollnumber").readOnly = false;
+    // let val = document.getElementById("rollnumber").value;
+    // con
+    // if (val[2] !== "L") {
+    //   val[2] = "L";
+    //   alert("changed");
+    // }
+    // document.getElementById("rollnumber").value = val;
   }
 
   return (
@@ -85,8 +95,9 @@ function Login() {
           <label htmlFor="rollnumber">Roll Number</label>
           <input
             onChange={(e) => {
-              setId(e.target.value);
+              setRollnumber(e.target.value);
             }}
+            value={rollnumber}
             id="rollnumber"
             type={"text"}
             placeholder="e.g 19L-1234"
@@ -106,6 +117,7 @@ function Login() {
           {/* <Link to="/castVote"> */}
           <Button
             onClick={() => {
+              //              capitalize();
               loginHandler();
               setTimeout(() => {
                 loginHandler();
