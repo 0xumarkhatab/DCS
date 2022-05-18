@@ -24,13 +24,15 @@ function Login() {
       document.getElementById("password") !== undefined
     )
       document.getElementById("password").innerHTML = null;
-    console.log("\nUser is  ", theUser);
+    console.log("\nUser in login is  ", theUser);
 
     dispatch({
       type: "SET__USER",
       USER: theUser,
     });
-    navigate("/castVote");
+    setTimeout(() => {
+      navigate("/castVote");
+    }, 2000);
   }
 
   async function nonVerified() {

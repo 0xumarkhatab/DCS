@@ -37,13 +37,11 @@ function AdminNavbar() {
             <Link className="link" to="/castVote">
               Approve Change
             </Link>
-            <Link className="link" to="/giveProposal">
-              Propose Change
-            </Link>
 
             <Link className="link" to="/contributed">
               Authorized Proposals
             </Link>
+
             {/* {user === null ? (
             ""
           ) : (

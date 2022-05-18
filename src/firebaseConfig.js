@@ -83,45 +83,28 @@ else{
 }
 
 
-async function dispatchProposals(){
+// async function dispatchProposals(){
 
-    const q = query(collection(db, "Proposals"));
+//     const q = query(collection(db, "Proposals"));
 
-    const querySnapshot = await getDocs(q);
-    let proposals=[];
-    await querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      let p=doc.data();
-      proposals.push(p);
+//     const querySnapshot = await getDocs(q);
+//     let proposals=[];
+//     await querySnapshot.forEach((doc) => {
+//       // doc.data() is never undefined for query doc snapshots
+//       let p=doc.data();
+//       proposals.push(p);
 
-    });
+//     });
     
-    if(proposals?.length){
-        console.log("calling2");
-        console.log(proposals);
-        currentProposalsSnapshot=[...proposals]
-        return true;
-    }
+//     if(proposals?.length){
+//         console.log("calling2");
+//         console.log(proposals);
+//         currentProposalsSnapshot=[...proposals]
+//         return true;
+//     }
 
 
-}
+// }
 
 
-
-export const  dispatchRedux=async (dispatch)=>{
-    await dispatchProposals();
-    
-    console.log("\n\n\n\t\t\tType is ",typeof(currentProposalsSnapshot),currentProposalsSnapshot,"\n\n\n")
-if(currentProposalsSnapshot!==undefined && currentProposalsSnapshot!==null){
-    dispatch({
-        type:"SET__PROPOSALSLIST",
-        PROPOSALSLIST:currentProposalsSnapshot
-    })
-    return true;
-
-}
-    
-
-
-}
 

@@ -4,7 +4,7 @@ import { dispatchRedux, updateProposal } from "../../firebaseConfig";
 import "./Proposal.css";
 import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
-function Proposal({ onClickHandler, object, disabled }) {
+function Proposal({ onClickHandler, key, object, disabled }) {
   const [proposalEndingTime, setProposalEndingTime] = useState(0);
   const dispatch = useDispatch();
   let theTime;
@@ -64,10 +64,9 @@ function Proposal({ onClickHandler, object, disabled }) {
 
     p.status = "accepted";
     updateProposal(p);
-    dispatchRedux(dispatch);
   }
   return (
-    <div className="proposal">
+    <div className="proposal" key={key}>
       <p>
         {object.finishTime && object.finishTime > new Date().getTime() && (
           <p className="voteClose">
@@ -118,7 +117,7 @@ function Proposal({ onClickHandler, object, disabled }) {
             );
           }
         })}
-        <br />
+
         <p>+more...</p>
       </div>
       <div className="buttons">

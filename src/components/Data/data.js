@@ -50,13 +50,13 @@ export const proposalsList = [
     
   ];
 
-  export const getAcceptedProposals=(userKey,ProposalsList)=>{
+  export const getMyProposals=(userKey,ProposalsList)=>{
     let result=[];
     let index=0;
     ProposalsList?.map((item)=>{
       if((item.proposedby===userKey) || (item.contributers.includes(userKey)) )
       result.push(index)
-      
+
       index+=1;
       
     }
@@ -65,7 +65,40 @@ export const proposalsList = [
     return result;
   }
 
+  export const getRejectedProposals=(ProposalsList)=>{
+    let result=[];
+    let index=0;
+    console.log("the prposal list is ",ProposalsList);
+    ProposalsList?.map((item)=>{
+      if((item.status==="rejected") )
+      result.push(index)
+      index+=1;
+      
+    }
+    
+    )
+    return result;
+  }
   
+  
+  export const getAcceptedProposals=(ProposalsList)=>{
+    let result=[];    console.log("the prposal list is ",ProposalsList);
+
+    let index=0;
+    ProposalsList?.map((item)=>{
+      if((item.status==="accepted") )
+      result.push(index)
+      else{
+        console.log("item status ",item.status," is not accepted\n");
+      }
+      index+=1;
+      
+    }
+    
+    )
+    console.log("accepted proposals are ",result);
+    return result;
+  }
   
 
 export const dispatchProposalsList=(dispatch)=>{

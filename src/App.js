@@ -29,14 +29,20 @@ const q = query(collection(db, "Proposals"));
 let list=[];
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
   const cities = [];
+  list=[];
   querySnapshot.forEach((doc) => {
       list.push(doc.data())
   });
   
+  
+  dispatch({
+    type:"CLEAR__STATE",
+  });
   dispatch({
     type:"SET__PROPOSALSLIST",
     PROPOSALSLIST:list,
   })
+
   console.log("the snapshot is ",list);
 
 });
@@ -61,7 +67,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
                  <Route exact path="/signup" element={<Signup />} />
                  
                  <Route exact path="/login" element={<Login />} />
-
+ 
 
 
                  

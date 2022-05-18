@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { useDispatch ,useSelector} from "react-redux"
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom";
 import Button from "../Button/Button"
 // import Button from "../Button/Button";
 
 import "./Navbar.css";
-// import { useSelector } from "react-redux/es/exports";
+import { useSelector } from "react-redux/es/exports";
 
 function Navbar() {
   const dispatch=useDispatch();
-  let user = null;
-  user = useSelector((state) => state?.USER);
-  let nonLoggedIn=user?"":"protected__navbar";
-  
+  let user =null;
+  user= useSelector(state=>state?.USER);
+  console.log("state  in navbar is ",user);
   return (
     <div className={"navbar " }>
       <div className="navbar__logo">
@@ -49,10 +48,13 @@ function Navbar() {
            <Link className="link" to="/">
              <Button
              Img={"./logout.png"}
-              onClick={()=>dispatch(  dispatch({
-                type: "CLEAR__STATE",
-              })
-            )} id="logoutButton" key="logoutButton" variant={"danger"}/>
+              onClick={()=>
+                dispatch({
+                  type: "SET__USER",
+                  USER: null,
+                })
+
+            } id="logoutButton" key="logoutButton" variant={"danger"}/>
            </Link>
            
         </nav>

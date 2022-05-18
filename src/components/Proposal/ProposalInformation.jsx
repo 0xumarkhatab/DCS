@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux/es/exports";
 import Button from "../Button/Button";
 import "./ProposalInformation.css";
 import { Link, useNavigate } from "react-router-dom";
-import { dispatchRedux, updateProposal } from "../../firebaseConfig";
+import { updateProposal } from "../../firebaseConfig";
 
 function ProposalInformation() {
   let proposal = useSelector((state) => state.CURRENTPROPOSAL);
@@ -55,8 +55,6 @@ function ProposalInformation() {
   function reject() {
     let theProposal = { ...proposal };
     theProposal.status = "rejected";
-    updateProposal(theProposal);
-    dispatchRedux(dispatch);
     ShowChanges(theProposal);
   }
 
@@ -71,7 +69,6 @@ function ProposalInformation() {
 
   async function ShowChanges(proposal_) {
     await updateProposal(proposal_);
-    await dispatchRedux(dispatch);
     navigate("/castVote");
   }
 

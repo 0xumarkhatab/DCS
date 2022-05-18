@@ -4,7 +4,7 @@ import Proposal from "./Proposal";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
-import { getAcceptedProposals } from "../Data/data";
+import { getAcceptedProposals, getRejectedProposals ,getMyProposals} from "../Data/data";
 
 function Contributed() {
   const [selected, setSelected] = useState(null);
@@ -20,6 +20,7 @@ function Contributed() {
 
   function clickHandler(obj) {
     obj.disabled = true;
+    
     dispatch({
       type: "SET__CURRENTPROPOSAL",
       CURRENTPROPOSAL: obj,
@@ -31,16 +32,33 @@ function Contributed() {
   console.log("total Proposals Are ", ProposalsList);
 
   let index = 0;
-  let indices = getAcceptedProposals(user?.rollnumber, ProposalsList);
-  let res = [];
-  console.log("\nindices to include\n", indices, "\n");
-  for (var i = 0; i < indices.length; i++) {
-    res.push(ProposalsList[indices[i]]);
+  
+  let myIndices = getMyProposals(user?.rollnumber, ProposalsList);
+
+  let accepted = [],rejected=[],my=[];
+  let rejectedIndices=getRejectedProposals(ProposalsList)
+    let acceptedIndices=getAcceptedProposals(ProposalsList);
+  for (var i = 0; i < myIndices.length; i++) {
+    my.push(ProposalsList[myIndices[i]]);
   }
-  ProposalsList = [...res];
-  ProposalsList = ProposalsList.sort(function (a, b) {
+  for (var i = 0; i < rejectedIndices.length; i++) {
+    rejected.push(ProposalsList[rejectedIndices[i]]);
+  }
+  for (var i = 0; i < acceptedIndices.length; i++) {
+    accepted.push(ProposalsList[acceptedIndices[i]]);
+  }
+
+  my = my.sort(function (a, b) {
     return b.contributers.length - a.contributers.length;
   });
+
+  rejected = rejected.sort(function (a, b) {
+    return b.contributers.length - a.contributers.length;
+  });
+  accepted = accepted.sort(function (a, b) {
+    return b.contributers.length - a.contributers.length;
+  });
+  console.log("accepted proposals to show ",accepted)
 
   return (
     <div className="contributed">
@@ -51,14 +69,15 @@ function Contributed() {
       )}
       {user === null && alert("Kindly Login First !")}
       {user === null ? <Navigate to="/login" /> : <p></p>}
-      {ProposalsList?.length === 0 ? (
+
+      { ( my?.length === 0 )? (
         <div className="empty__proposals">
           {" "}
           <h5>No Contributions have been made</h5>{" "}
         </div>
       ) : (
         <div className="contributedList">
-          {ProposalsList?.map((item) => {
+          { user.type!=="admin" && my?.map((item) => {
             return (
               <Proposal
                 onClickHandler={clickHandler}
@@ -68,8 +87,13 @@ function Contributed() {
               />
             );
           })}
+
         </div>
+
       )}
+
+      
+
     </div>
   );
 }

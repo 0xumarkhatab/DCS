@@ -34,7 +34,8 @@ const reducer=(state=initialState,action)=>{
             break;
         case "CLEAR__STATE":
             return {
-                initialState
+                ...state,
+                PROPOSALSLIST:null,
             }
             break;
         default:

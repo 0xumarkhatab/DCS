@@ -59,12 +59,9 @@ function ProposalSuggestion() {
     document.getElementById("title").value = null;
     document.getElementById("description").value = null;
 
-    theProposalsList.push(proposalObj);
+    //    theProposalsList.push(proposalObj);
     updateProposal(proposalObj);
-    dispatch({
-      type: "SET__PROPOSALSLIST",
-      PROPOSALSLIST: theProposalsList,
-    });
+
     setTimeout(() => {
       navigate("/castVote");
     }, 2000);

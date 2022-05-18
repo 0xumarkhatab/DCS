@@ -4,7 +4,7 @@ import "./CastVote.css";
 import ProposalInformation from "../Proposal/ProposalInformation";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { Navigate, useNavigate } from 'react-router-dom'
-import { getAcceptedProposals} from '../Data/data'
+import { getAcceptedProposals, getMyProposals} from '../Data/data'
 import { dispatchRedux } from '../../firebaseConfig'
 
 function CastVote() {
@@ -43,17 +43,18 @@ console.log("\nProposals List in CastVote := ",proposalsList)
 
   }
 
-  let acceptedIndices=getAcceptedProposals(user?.rollnumber,proposalsList);
-  console.log("Accepted ",acceptedIndices);
-  let filteredList=[];
-   
+  let myIndices=getMyProposals (user?.rollnumber,proposalsList);
+  console.log("indices not to include ",myIndices);
+  
+  let filteredList=[]; 
 
-  proposalsList?.map((item)=>{
+    let indexCounter=0;
+  proposalsList?.map((item,index)=>{
     
-    if((acceptedIndices?.includes(item.id-1)===false)&& (item.proposedby!==user?.rollnumber) ){
-      console.log("proposal ",item.id," has not been contributed\n");
+    if((myIndices?.includes(indexCounter)===false) ){
       filteredList.push(item);
     }
+    indexCounter++;
     
   }) ;
 
@@ -66,6 +67,7 @@ console.log("\nProposals List in CastVote := ",proposalsList)
   filteredList=filteredList.sort(function (a,b){
     return b.contributers.length-a.contributers.length;
   })
+  
   if(user?.type==="admin")
     filteredList=filteredList.filter(obj=>obj.status==="pending");
   else 
