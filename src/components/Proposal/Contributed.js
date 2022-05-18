@@ -67,17 +67,16 @@ function Contributed() {
           <h5> Contributed Proposals</h5>{" "}
         </div>
       )}
-      {user === null && alert("Kindly Login First !")}
       {user === null ? <Navigate to="/login" /> : <p></p>}
 
-      { ( my?.length === 0 )? (
+      { ( user?.type!=="admin"&& my?.length === 0 )? (
         <div className="empty__proposals">
           {" "}
           <h5>No Contributions have been made</h5>{" "}
         </div>
       ) : (
-        <div className="contributedList">
-          { user.type!=="admin" && my?.map((item) => {
+        user?.type!=="admin" &&  <div className="contributedList">
+          {  my?.map((item) => {
             return (
               <Proposal
                 onClickHandler={clickHandler}
@@ -92,6 +91,61 @@ function Contributed() {
 
       )}
 
+{ ( user?.type==="admin" && rejected?.length === 0 )? (
+        <div className="empty__proposals">
+          {" "}
+          <h5>No Rejected Proposals</h5>{" "}
+        </div>
+      ) : (
+        user?.type==="admin" &&         <div>
+        <div className="proposalList__heading"><h5> Rejected Proposals</h5>{" "}</div>
+        <div className="contributedList">
+        {  accepted?.map((item) => {
+          return (
+            <Proposal
+              onClickHandler={clickHandler}
+              key={"pid" + item.id}
+              object={item}
+              disabled
+            />
+          );
+        })}
+
+      </div>
+      
+      </div>
+
+
+      )}
+
+
+{ ( accepted?.length === 0 )? (
+        <div className="empty__proposals">
+          {" "}
+          <h5>No Accepted Proposals</h5>{" "}
+        </div>
+      ) : (
+        
+        <div>
+          <div className="proposalList__heading"><h5> Accepted Proposals</h5>{" "}</div>
+          <div className="contributedList">
+          {  accepted?.map((item) => {
+            return (
+              <Proposal
+                onClickHandler={clickHandler}
+                key={"pid" + item.id}
+                object={item}
+                disabled
+              />
+            );
+          })}
+
+        </div>
+        
+        </div>
+
+      )}
+            
       
 
     </div>

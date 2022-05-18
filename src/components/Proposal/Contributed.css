@@ -3,9 +3,13 @@
   animation: fadeInOpacity 2s;
   flex-direction: column;
   color: white;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
 }
 
-.contributed > .title {
+.contributed > .title,
+.proposalList__heading {
   font-size: 2rem;
   justify-content: center;
   display: flex;
@@ -13,12 +17,16 @@
   padding-bottom: 5vh;
 }
 
+.contributed > .empty__proposals {
+  border-bottom: 1px solid var(--bg-primary);
+  height: 20vh;
+  padding-bottom: 5vh;
+}
 .contributed > .contributedList {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-gap: 10px 10px;
-
-  padding-bottom: 5vh;
+  border-top: 1px solid var(--bg-primary);
 }
 .contributed > .contributedList > .proposal {
   width: 20vw;

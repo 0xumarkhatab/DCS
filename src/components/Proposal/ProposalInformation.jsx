@@ -48,7 +48,7 @@ function ProposalInformation() {
     let theProposal = { ...proposal };
     theProposal.status = "listed";
     var finishTime = new Date(new Date());
-    finishTime.setDate(finishTime.getDate() + 3);
+    finishTime.setDate(finishTime.getDate() + 1);
     theProposal.finishTime = finishTime.getTime();
     ShowChanges(theProposal);
   }

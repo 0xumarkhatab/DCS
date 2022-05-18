@@ -37,6 +37,10 @@ console.log("\nProposals List in CastVote := ",proposalsList)
       type: "SET__CURRENTPROPOSAL",
       CURRENTPROPOSAL: obj,
     });
+    
+    setTimeout(() => {
+      
+    }, 2000);
     navigate("/proposalInformation")
     setSelected(true);
 
