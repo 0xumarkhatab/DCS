@@ -44,7 +44,7 @@
   font-size: 18px;
 }
 
-p.proposal__options {
+.proposal__options {
   display: flex;
   flex-direction: column;
 }
@@ -56,19 +56,28 @@ p.proposal__options {
 
 .proposal__options__list {
   display: grid;
-  width: 60vw;
-  grid-template-columns: auto auto auto;
-  margin-bottom: 20px;
+  width: 80vw;
+  grid-template-columns: auto auto;
 }
 .proposal__options__list > button {
   margin-left: 30px;
   margin-top: 30px;
-  width: 10vw;
+  width: 30vw;
 }
 .voteButton {
   margin: 0 auto;
 }
-
+.proposal__authority__options {
+  display: flex;
+  justify-content: space-between;
+}
+.proposal__authority__options > .btn {
+  margin-left: 10vw;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .already__contributed {
   margin-left: 50vw;
 }

@@ -29,7 +29,6 @@
 }
 
 .contributed > .empty__proposals {
-  border-bottom: 1px solid var(--bg-primary);
   height: 20vh;
   padding-bottom: 5vh;
 }

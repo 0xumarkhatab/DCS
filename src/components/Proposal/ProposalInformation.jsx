@@ -132,35 +132,35 @@ function ProposalInformation() {
                 }
               />
             </div>
+
+            {user.type == "admin" && (
+              <p className="proposal__authority__options">
+                <Button
+                  title={"Approve"}
+                  variant={"success"}
+                  key="approveButton"
+                  id="approvedButton"
+                  onClick={approve}
+                />
+                <Button
+                  title={"Reject"}
+                  variant={"danger"}
+                  key="rejectButton"
+                  id="rejectButton"
+                  onClick={reject}
+                />
+              </p>
+            )}
+
+            {user.type != "admin" &&
+              proposal.proposedby !== user?.rollnumber &&
+              proposal.status === "accepted" && (
+                <div className="accepted__message">
+                  <h6> Proposal is No Longer Accepting the Responses</h6>
+                </div>
+              )}
           </p>
         )}
-
-        {user.type == "admin" && (
-          <p className="proposal__options">
-            <Button
-              title={"Approve"}
-              variant={"success"}
-              key="approveButton"
-              id="approvedButton"
-              onClick={approve}
-            />
-            <Button
-              title={"Reject"}
-              variant={"danger"}
-              key="rejectButton"
-              id="rejectButton"
-              onClick={reject}
-            />
-          </p>
-        )}
-
-        {user.type != "admin" &&
-          proposal.proposedby !== user?.rollnumber &&
-          proposal.status === "accepted" && (
-            <div className="accepted__message">
-              <h6> Proposal is No Longer Accepting the Responses</h6>
-            </div>
-          )}
       </div>
     </div>
   );
