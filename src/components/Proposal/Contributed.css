@@ -8,6 +8,13 @@
   height: fit-content;
   padding-bottom: 10vh;
 }
+.contributed hr {
+  content: " ";
+  background-color: white;
+  color: white;
+  width: 97vw;
+  margin-top: 5vh;
+}
 
 .contributed > .title,
 .proposalList__heading {

@@ -77,7 +77,7 @@ function Contributed() {
         </div>
       ) : (
         user?.type!=="admin" &&         <div>
-        <div className="proposalList__heading"><h5> Listed Proposals</h5>{" "}</div>
+        <div className="proposalList__heading"><h5> My Voted and Proposed Proposals</h5>{" "}</div>
         <div className="contributedList">
         {  my?.map((item) => {
           return (
@@ -123,7 +123,7 @@ function Contributed() {
 
 
       )}
-
+<hr/>
 
 
 { ( accepted?.length === 0 )? (
@@ -134,7 +134,7 @@ function Contributed() {
       ) : (
         
         <div>
-          <div className="proposalList__heading"><h5> Accepted Proposals</h5>{" "}</div>
+          <div className="proposalList__heading"><h5> Overall Accepted Proposals</h5>{" "}</div>
           <div className="contributedList">
           {  accepted?.map((item) => {
             return (
