@@ -62,6 +62,7 @@ function Contributed() {
 
   return (
     <div className="contributed">
+
       {proposalsList?.length > 0 && (
         <div className="title">
           <h5> Contributed Proposals</h5>{" "}
@@ -75,20 +76,24 @@ function Contributed() {
           <h5>No Contributions have been made</h5>{" "}
         </div>
       ) : (
-        user?.type!=="admin" &&  <div className="contributedList">
-          {  my?.map((item) => {
-            return (
-              <Proposal
-                onClickHandler={clickHandler}
-                key={"pid" + item.id}
-                object={item}
-                disabled
-              />
-            );
-          })}
+        user?.type!=="admin" &&         <div>
+        <div className="proposalList__heading"><h5> Listed Proposals</h5>{" "}</div>
+        <div className="contributedList">
+        {  my?.map((item) => {
+          return (
+            <Proposal
+              onClickHandler={clickHandler}
+              key={"pid" + item.id}
+              object={item}
+              disabled
+            />
+          );
+        })}
 
-        </div>
-
+      </div>
+      
+      </div>
+      
       )}
 
 { ( user?.type==="admin" && rejected?.length === 0 )? (
@@ -116,7 +121,9 @@ function Contributed() {
       </div>
 
 
+
       )}
+
 
 
 { ( accepted?.length === 0 )? (

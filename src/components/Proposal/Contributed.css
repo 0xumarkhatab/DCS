@@ -6,15 +6,19 @@
   justify-content: center;
   align-items: center;
   height: fit-content;
+  padding-bottom: 10vh;
 }
 
 .contributed > .title,
 .proposalList__heading {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding: 10px;
   font-size: 2rem;
   justify-content: center;
   display: flex;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  border: 1px solid var(--bg-primary);
+  border-radius: 10px;
 }
 
 .contributed > .empty__proposals {
@@ -27,6 +31,7 @@
   grid-template-columns: auto auto auto;
   grid-gap: 10px 10px;
   border-top: 1px solid var(--bg-primary);
+  padding-bottom: 10vh;
 }
 .contributed > .contributedList > .proposal {
   width: 20vw;
