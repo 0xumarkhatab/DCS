@@ -16,12 +16,14 @@ button > .title {
   font-size: 20px;
   text-decoration: none;
   margin-right: 20px;
+  margin-left: 20px;
 }
 
 .btn > .icon {
   width: 2rem;
   height: 2rem;
   object-fit: contain;
+  margin-right: 20px;
 }
 
 .btn > .circularTitle {

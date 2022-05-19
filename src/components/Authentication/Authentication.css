@@ -1,9 +1,9 @@
 .authentication {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   padding: 0 10vh 5vh 0;
 }
 .authentication__instructions p {
@@ -27,6 +27,7 @@
 }
 .authentication__buttons {
   display: flex;
+  margin-top: 30vh;
 }
 .authentication__buttons > a {
   text-decoration: none;

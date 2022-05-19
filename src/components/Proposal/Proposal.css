@@ -124,14 +124,13 @@ button.danger {
   color: white;
 }
 
-.proposal__options {
+.proposal__options__display {
   display: grid;
   grid-template-columns: auto auto;
   margin-top: 20px;
-  padding-bottom: 10vh;
 }
-.proposal__options > p {
-  margin: 20px;
+.proposal__options__display > p {
+  margin-top: 20px;
   margin-left: 0;
 }
 

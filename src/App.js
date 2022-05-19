@@ -17,10 +17,11 @@ import {dispatchRedux, UploadProposals} from "./firebaseConfig";
 import Authentication from './components/Authentication/Authentication'
 import Signup from "./components/Authentication/Signup";
 import AdminNavbar from './components/Navbar/AdminNavbar'
-
+import Profile from './components/Profile/Profile'
 import { collection, query, where, onSnapshot } from "@firebase/firestore";
 import {db} from "./firebaseConfig"
 import Contributed from './components/Proposal/Contributed'
+import MobileNavbar from './components/Navbar/MobileNavbar'
 function App() {
   let user=useSelector(state=>state?.USER);  
   const dispatch=useDispatch(); 
@@ -55,6 +56,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
       {
         user?.type==="admin"?<AdminNavbar /> :<Navbar/>
       }
+      <MobileNavbar/>
       
       <Routes>
                  <Route index  exact path="" element={ <Introduction/> }/>
@@ -65,8 +67,9 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
                  <Route exact path="/contributed" element={<Contributed />} ></Route>
                  <Route exact path="/authentication" element={<Authentication />} />
                  <Route exact path="/signup" element={<Signup />} />
-                 
                  <Route exact path="/login" element={<Login />} />
+                 <Route exact path="/profile" element={<Profile />} />
+                 
  
 
 

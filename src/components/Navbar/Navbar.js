@@ -39,6 +39,10 @@ function Navbar() {
           <Link className="link" to="/contributed">
             Contributed Proposals
           </Link>
+          <Link className="link" to="/profile">
+           My Profile
+          </Link>
+          
           {/* {user === null ? (
             ""
           ) : (
@@ -46,6 +50,7 @@ function Navbar() {
           )}
            */}
            <Link className="link" to="/">
+             <div className="action__btn">
              <Button
              Img={"./logout.png"}
               onClick={()=>
@@ -55,6 +60,9 @@ function Navbar() {
                 })
 
             } id="logoutButton" key="logoutButton" variant={"danger"}/>
+           
+             </div>
+           
            </Link>
            
         </nav>

@@ -25,6 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 0.3;
 }
 .navbar__logo > div > a > img {
   width: 6rem;
@@ -35,10 +36,10 @@
 .navbar__logo > .company__description {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 28vw;
 }
 .navbar__logo > .company__description > h1 {
-  font-size: max(16px, 1.8vw);
+  font-size: max(14px, 1.6vw);
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
@@ -49,13 +50,14 @@
 
 .navItems {
   display: flex;
-  flex: 0.88;
-  margin-right: 30px;
+  flex: 0.7;
 }
 .navItems > nav {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin-right: 30px;
 }
 .navItems > nav > a {
   padding: 1rem;
@@ -71,13 +73,16 @@
   cursor: pointer;
 }
 
-.navItems > nav > .btn-primary {
+.navItems > nav > .action__btn {
   position: fixed;
   margin-top: 30px;
   right: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .navItems {
     transform: scale(0);
     display: none;

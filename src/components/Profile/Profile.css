@@ -1,0 +1,8 @@
+.profile {
+  height: 100vh;
+  background: black;
+  font-size: 1.8vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
